@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="login" mnemonicParsing="false" onAction="#handleMenuLogin" text="Log out" />
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuClose" text="Exit" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Bán Hàng">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleMenuBanHang" text="Bán Hàng" />
+              </items>
+            </Menu>
+          <Menu fx:id="edit" mnemonicParsing="false" text="Quản lý">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuNhaCungCap" text="Nhà Cung Cấp" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemNhanVien" text="Nhân Viên" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemHang" text="Hàng" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemDonNhapHang" text="Lập đơn nhập hàng" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemUser" text="Tài Khoản user" />
+            </items>
+          </Menu>
+            <Menu fx:id="timKiem" mnemonicParsing="false" text="Tìm kiếm">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleMenuItemTimNCC" text="Tìm nhà cung cấp" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemTimNhanVien" text="Tìm nhân viên" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemTimDonNhapHang" text="Tìm đơn nhập hàng" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemTimHang" text="Tìm hàng" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Report">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemRpNv" text="Danh sách Nhân viên" />
+                <MenuItem mnemonicParsing="false" onAction="#handleMenuItemRpNcc" text="Danh sách Nhà cung cấp" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemRpHang" text="Danh sách Hàng Hóa" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemRpDonHang" text="Report Đơn Nhập Hàng" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemRpBanHang" text="Report Bán Hàng" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuItemAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="ParentControl" layoutX="22.0" layoutY="39.0" prefHeight="563.0" prefWidth="768.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="39.0" />
+   </children>
+</AnchorPane>

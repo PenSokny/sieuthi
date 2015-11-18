@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TimHangController">
+   <children>
+      <Label layoutX="297.0" layoutY="37.0" text="Tìm Kiếm Thông Tin Hàng" textFill="#64d733">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="98.0" text="Mã Hàng" />
+      <Label layoutX="56.0" layoutY="136.0" text="Tên Hàng" />
+      <TextField fx:id="txtMaHang" layoutX="148.0" layoutY="94.0" />
+      <TextField fx:id="txtTenHang" layoutX="148.0" layoutY="132.0" />
+      <Button layoutX="402.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleButtonHienThiMaHang" text="Tìm Theo Mã Hàng" />
+      <Button layoutX="401.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleButtonHienThiTenHang" text="Tìm Theo Tên Hàng" />
+      <Button layoutX="578.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleButtonHienTatHang" text="Hiển Thị Tất Cả Hàng" />
+      <Button layoutX="578.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleButtonExit" prefHeight="25.0" prefWidth="129.0" text="Exit" />
+      <TableView fx:id="tableTTHang" layoutX="2.0" layoutY="177.0" prefHeight="353.0" prefWidth="782.0">
+        <columns>
+          <TableColumn fx:id="maHang" prefWidth="75.0" text="Mã Hàng" />
+          <TableColumn fx:id="tenHang" prefWidth="130.0" text="Tên Hàng" />
+            <TableColumn fx:id="maNCC" prefWidth="138.0" text="Mã Nhà Cùng Cấp" />
+            <TableColumn fx:id="donviTinh" prefWidth="89.0" text="Đơn Vị Tính" />
+            <TableColumn fx:id="giaNhap" prefWidth="82.0" text="Giá Nhập" />
+            <TableColumn fx:id="giaBan" prefWidth="85.0" text="Giá Bán" />
+            <TableColumn fx:id="ghiChu" prefWidth="79.0" text="Ghi Chủ" />
+            <TableColumn fx:id="ngayHSD" prefWidth="102.0" text="Ngày HSD" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

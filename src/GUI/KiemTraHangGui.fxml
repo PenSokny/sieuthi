@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KiemTraHangController">
+   <children>
+      <Label layoutX="152.0" layoutY="25.0" text="Tìm Kiếm Và Kiếm Tra Hàng" textFill="#1818c6">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="74.0" text="Tìm theo mã hàng " />
+      <Label layoutX="41.0" layoutY="111.0" text="Tìm theo tên hàng" />
+      <Label layoutX="41.0" layoutY="146.0" text="Tìm theo nhà cung cấp " />
+      <Label layoutX="39.0" layoutY="184.0" text="Tìm hàng còn trong kho" />
+      <Label layoutX="39.0" layoutY="222.0" prefHeight="17.0" prefWidth="178.0" text="Tìm hàng không còn trong kho" />
+      <Label layoutX="39.0" layoutY="259.0" prefHeight="17.0" prefWidth="186.0" text="Tìm hàng có HSD trong khoảng " />
+      <Button layoutX="432.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnTimMaHang" text="Tìm" />
+      <Button layoutX="432.0" layoutY="107.0" mnemonicParsing="false" onAction="#btnTimTen" text="Tìm" />
+      <Button layoutX="432.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnTimNCC" text="Tìm" />
+      <Button layoutX="228.0" layoutY="180.0" mnemonicParsing="false" onAction="#btnTimHangTrongKho" text="Tìm" />
+      <Button layoutX="228.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnTimHangKoTrongKho" text="Tìm" />
+      <Button layoutX="508.0" layoutY="297.0" mnemonicParsing="false" onAction="#btnTimNgay" text="Tìm" />
+      <TextField fx:id="txtTimMaHang" layoutX="228.0" layoutY="70.0" prefHeight="25.0" prefWidth="178.0" />
+      <TextField fx:id="txtTimTen" layoutX="228.0" layoutY="107.0" prefHeight="25.0" prefWidth="178.0" />
+      <ComboBox fx:id="txtTimNCC" layoutX="228.0" layoutY="142.0" prefHeight="25.0" prefWidth="178.0" />
+      <Label layoutX="39.0" layoutY="301.0" prefHeight="17.0" prefWidth="186.0" text="từ" />
+      <Label layoutX="274.0" layoutY="301.0" prefHeight="17.0" prefWidth="186.0" text="đến" />
+      <DatePicker fx:id="ngayBatDau" layoutX="63.0" layoutY="297.0" prefHeight="25.0" prefWidth="178.0" />
+      <DatePicker fx:id="ngayKetThuc" layoutX="311.0" layoutY="297.0" prefHeight="25.0" prefWidth="178.0" />
+      <TableView layoutX="3.0" layoutY="337.0" prefHeight="242.0" prefWidth="743.0">
+        <columns>
+          <TableColumn fx:id="maHang" prefWidth="67.0" text="Mã hàng " />
+          <TableColumn fx:id="tenHang" prefWidth="119.0" text="Tên hàng" />
+            <TableColumn fx:id="donViTinh" prefWidth="81.0" text="Đơn vị tính" />
+            <TableColumn fx:id="nhaCC" prefWidth="85.0" text="nhà cung cấp" />
+            <TableColumn fx:id="giaNhap" prefWidth="77.0" text="Giá nhập" />
+            <TableColumn fx:id="giaBan" prefWidth="77.0" text="Giá bán" />
+            <TableColumn fx:id="ngayHSD" prefWidth="86.0" text="Ngày HSD" />
+            <TableColumn fx:id="soLuong" text="Số lượng" />
+            <TableColumn fx:id="ghiChu" prefWidth="70.0" text="Ghi chú" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

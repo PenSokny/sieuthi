@@ -1,0 +1,130 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DAL;
+
+import DTO.HangDTO;
+import DTO.NhaCCDTO;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javax.swing.JOptionPane;
+import DTO.KhoSanPhamDTO;
+import java.time.LocalDate;
+
+/**
+ *
+ * @author Sokny Pen
+ */
+public class TTHangDal {
+    
+    HangDTO hangDto=new HangDTO();
+    DatabaseManager db =new DatabaseManager();
+    ResultSet resultSet;
+    KhoSanPhamDTO khoSPDto=new KhoSanPhamDTO();
+    
+    private ObservableList<HangDTO> data=FXCollections.observableArrayList();
+    private ObservableList<String> dataMaNcc=FXCollections.observableArrayList();
+    private ObservableList<String> dataTenNcc=FXCollections.observableArrayList();
+    
+    public ObservableList<String> loadDataMaNcc(){
+        try{
+            resultSet=db.loadData("SELLECT maNCC FROM nhacungcap");
+            while(resultSet.next()){
+                dataMaNcc.add(resultSet.getString("maNCC"));
+            }
+            resultSet.close();
+            
+        }catch(SQLException ex){
+            Logger.getLogger(TTHangDal.class.getName()).log(Level.SEVERE, null,ex);
+        }
+        return dataMaNcc;
+    }
+    
+    public String loadDataTenNcc(NhaCCDTO nCCDto){
+        
+        String tenNcc=null;
+        try{
+            if(!nCCDto.getMaNcc().isEmpty()){
+                String sqlCode="select maNCC from nhacungcap where maNCC='"+nCCDto.getMaNcc()+"'";
+                resultSet=db.loadData(sqlCode);
+                if(resultSet.next()){
+                    tenNcc=resultSet.getString("tenNCC");
+                }
+            }
+            resultSet.close();
+            
+        }catch(SQLException ex){
+            Logger.getLogger(TTHangDal.class.getName()).log(Level.SEVERE, null,ex);
+        }
+        return tenNcc;
+    }
+    
+    public ObservableList<HangDTO> loadData(HangDTO hangDto){
+        try{
+            String maHang;
+            String tenHang;
+            //String tenNcc;
+            String maNcc;
+            String ghiChu;
+            String donViTinh;
+            double giaBan;
+            double giaNhap;
+            LocalDate ngayHSD;
+            while(resultSet.next()){
+                maHang=resultSet.getString("maHang");
+                tenHang=resultSet.getString("tenHang");
+                maNcc=resultSet.getString("maNCC");
+                donViTinh=resultSet.getString("donViTinh");
+                giaNhap=Double.parseDouble("giaNhap");
+                giaBan=Double.parseDouble("giaBan");
+                ghiChu=resultSet.getString("ghiChu");
+                ngayHSD = resultSet.getString("NgayHSD");
+                
+               data.add(new HangDTO(maHang,tenHang,maNcc,donViTinh,giaNhap,giaBan,ghiChu,ngayHSD));
+    
+            }
+            resultSet.close();
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return data;
+    }
+    
+    public ResultSet getHang(){
+        resultSet=db.loadData("select*from hang");
+        return resultSet;
+    }
+    
+    public int saveKhoSanPham(KhoSanPhamDTO khoSPDto)
+     {
+      
+        String sql="INSERT INTO khosanpham VALUES('"+khoSPDto.getMaHang()+"',"+khoSPDto.getSoLuong()+")";
+        int result=db.executeData(sql);
+        return result;
+    }
+    
+    public int saveData(HangDTO hangDto)
+    {
+      
+        String sql="INSERT INTO hang(maHang,tenHang,maNCC ,donViTinh, giaNhap, giaBan,ghiChu, ngayHSD) VALUES("
+                + "'"+ hangDto.getMaHang()+"',"
+                + "'"+ hangDto.getTenHang()+"',"
+                + "'"+ hangDto.getMaNCC()+ "',"
+                + "'"+hangDto.getDonViTinh()+"',"
+                + hangDto.getGiaNhap() +","
+                + hangDto.getGiaBan() + ","
+                + "'"+ hangDto.getGhiChu() +  "',"
+                + "'"+ hangDto.getNgayHSD() + "')";
+        
+        int result=db.executeData(sql);
+        return result;
+    }
+            
+}

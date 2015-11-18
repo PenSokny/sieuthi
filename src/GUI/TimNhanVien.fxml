@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="592.0" prefWidth="749.0" stylesheets="@../../../../../Desktop/bai%20tap%20lon%20java/QuanlySieuthi_JavaFx/QuanlySieuthi_JavaFx/src/gui/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TimNVController">
+   <children>
+      <Label layoutX="54.0" layoutY="126.0" text="Mã nhân viên">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="279.0" layoutY="54.0" text="Tìm nhân viên" textFill="#2a0078">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="174.0" text="Họ tên nhân viên">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMa" layoutX="197.0" layoutY="126.0" />
+      <TextField fx:id="txtTen" layoutX="197.0" layoutY="174.0" />
+      <TableView fx:id="tblNhanVien" layoutX="54.0" layoutY="248.0" prefHeight="304.0" prefWidth="668.0">
+         <columns>
+            <TableColumn fx:id="ma" prefWidth="117.0" text="Mã nhân viên" />
+            <TableColumn fx:id="ten" prefWidth="171.0" text="Họ tên nhân viên" />
+            <TableColumn fx:id="sdth" prefWidth="158.0" text="Điện thoại liên hệ" />
+            <TableColumn fx:id="moTa" prefWidth="229.0" text="Mô tả" />
+         </columns>
+      </TableView>
+      <Button layoutX="375.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleTimKiemTheoMaNhanVien" prefHeight="25.0" prefWidth="91.0" text="Tìm kiếm" />
+      <Button layoutX="489.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleTimTat" prefHeight="25.0" prefWidth="91.0" text="Hiển thị tất cả" />
+      <Button layoutX="375.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleTimKiemTheoTenNhanVien" prefHeight="25.0" prefWidth="91.0" text="Tìm kiếm" />
+   </children>
+</AnchorPane>

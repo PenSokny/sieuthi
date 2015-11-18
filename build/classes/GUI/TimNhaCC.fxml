@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="589.0" prefWidth="723.0" stylesheets="@../../../../../Desktop/bai%20tap%20lon%20java/QuanlySieuthi_JavaFx/QuanlySieuthi_JavaFx/src/gui/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TimNCCController">
+   <children>
+      <TableView fx:id="tblNcc" layoutX="41.0" layoutY="145.0" prefHeight="392.0" prefWidth="641.0">
+         <columns>
+            <TableColumn fx:id="maNcc" prefWidth="124.0" text="Mã NCC" />
+            <TableColumn fx:id="tenNcc" prefWidth="174.0" text="Tên NCC" />
+            <TableColumn fx:id="soDt" prefWidth="157.0" text="Số ĐT" />
+            <TableColumn fx:id="diaChi" prefWidth="172.0" text="Địa chỉ" />
+         </columns>
+      </TableView>
+      <Label layoutX="72.0" layoutY="103.0" text="Tên nhà cung cấp" />
+      <TextField fx:id="txtTenNcc" layoutX="187.0" layoutY="99.0" />
+      <TextField fx:id="txtMaNcc" layoutX="187.0" layoutY="68.0" />
+      <Label layoutX="72.0" layoutY="72.0" text="Mã nhà cung cấp" />
+      <Button layoutX="362.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleTimMa" text="Tìm" />
+      <Button layoutX="362.0" layoutY="99.0" mnemonicParsing="false" onAction="#handleTimTen" text="Tìm" />
+      <Label layoutX="187.0" layoutY="14.0" text="Tìm Kiếm Nhà Cung Cấp" textFill="#0313b9">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="423.0" layoutY="99.0" mnemonicParsing="false" onAction="#handleTimTat" text="Hiện tất cả" />
+   </children>
+</AnchorPane>

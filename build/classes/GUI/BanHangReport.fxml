@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BanHangReportController">
+   <children>
+      <Button fx:id="btnXem" layoutX="160.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonXem" text="Xem và in Report" />
+      <Label layoutX="99.0" layoutY="75.0" text="Từ Ngày" />
+      <Label layoutX="94.0" layoutY="112.0" text="Đến Ngày" />
+      <DatePicker fx:id="ngayButDau" layoutX="160.0" layoutY="71.0" />
+      <DatePicker fx:id="ngayKetThuc" layoutX="160.0" layoutY="108.0" />
+   </children>
+</AnchorPane>

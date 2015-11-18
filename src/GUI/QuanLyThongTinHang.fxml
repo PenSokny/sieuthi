@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyThongTinHangController">
+   <children>
+      <Label layoutX="288.0" layoutY="14.0" text="Quản Lý Thông TIin Hàng" textFill="#5410c9">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="64.0" prefHeight="17.0" prefWidth="52.0" text="Mã hàng" />
+      <Label layoutX="10.0" layoutY="96.0" text="Tên hàng" />
+      <Label layoutX="12.0" layoutY="132.0" text="Mã NCC" />
+      <Label layoutX="12.0" layoutY="173.0" text="Tên NCC" />
+      <Label layoutX="6.0" layoutY="211.0" text="Đơn vị tính" />
+      <Label layoutX="11.0" layoutY="248.0" text="Gia nhập" />
+      <Label layoutX="14.0" layoutY="289.0" text="Giá bán" />
+      <Label layoutX="14.0" layoutY="332.0" text="Ghi chú" />
+      <Label layoutX="7.0" layoutY="371.0" text="Ngày HSD" />
+      <Button layoutX="69.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleButtonThemMoi" text="Thêm" />
+      <Button layoutX="154.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleButtonLuu" text="Lưu" />
+      <Button layoutX="69.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonUpdate" text="Sửa" />
+      <Button layoutX="154.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonXoa" text="Xóa" />
+      <TableView layoutX="209.0" layoutY="60.0" prefHeight="319.0" prefWidth="567.0">
+        <columns>
+          <TableColumn fx:id="maHang" prefWidth="63.0" text="Mã hàng" />
+          <TableColumn fx:id="tenHang" prefWidth="91.0" text="Tên hàng" />
+            <TableColumn fx:id="maNCC" prefWidth="57.0" text="Mã NCC" />
+            <TableColumn fx:id="tenNCC" prefWidth="68.0" text="Tên NCC" />
+            <TableColumn fx:id="giaNhap" prefWidth="73.0" text="Giá nhập" />
+            <TableColumn fx:id="giaBan" prefWidth="63.0" text="Giá bán" />
+            <TableColumn fx:id="donViTing" prefWidth="74.0" text="Đơn vị tính" />
+            <TableColumn fx:id="ghiChu" prefWidth="77.0" text="Ghi chú" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtMaHang" layoutX="70.0" layoutY="60.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField fx:id="txtTenHang" layoutX="70.0" layoutY="92.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField fx:id="txtTenNCC" layoutX="69.0" layoutY="169.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField fx:id="txtDonViTinh" layoutX="70.0" layoutY="207.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField fx:id="txtGiaNhap" layoutX="70.0" layoutY="248.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField fx:id="txtGiaBan" layoutX="70.0" layoutY="289.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField fx:id="txtGhiChu" layoutX="70.0" layoutY="328.0" prefHeight="25.0" prefWidth="121.0" />
+      <DatePicker fx:id="ngayHSD" layoutX="69.0" layoutY="367.0" prefHeight="25.0" prefWidth="121.0" />
+      <ComboBox fx:id="cbMaNCC" layoutX="69.0" layoutY="128.0" prefHeight="25.0" prefWidth="121.0" />
+   </children>
+</AnchorPane>

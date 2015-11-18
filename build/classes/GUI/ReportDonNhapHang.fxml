@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.ReportDonNhapHangController">
+   <children>
+      <DatePicker fx:id="txtTo" layoutX="89.0" layoutY="57.0" />
+      <DatePicker fx:id="txtFrom" layoutX="89.0" layoutY="100.0" />
+      <Label layoutX="39.0" layoutY="61.0" text="Từ" />
+      <Label layoutX="32.0" layoutY="104.0" text="Đến" />
+      <Button layoutX="89.0" layoutY="145.0" mnemonicParsing="false" onAction="#btnReportDonHang" prefHeight="25.0" prefWidth="174.0" text="Xem Report" />
+   </children>
+</AnchorPane>

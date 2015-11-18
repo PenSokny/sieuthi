@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="864.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DonNhapHangController">
+   <children>
+      <Label layoutX="25.0" layoutY="14.0" text="Thông tin hóa đơn" textFill="#1e019e">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="25.0" layoutY="49.0" text="Mã hòa đơn" />
+      <TextField fx:id="txtMaHoaDon" layoutX="112.0" layoutY="45.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="21.0" layoutY="77.0" text="Ngày đặt hàng" />
+      <DatePicker fx:id="ngayNhapHang" editable="false" layoutX="112.0" layoutY="73.0" />
+      <Label layoutX="27.0" layoutY="111.0" text="Chọn nhà cung cấp" textFill="#370090">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="25.0" layoutY="147.0" text="Mã nhà cung cấp" />
+      <ComboBox fx:id="cbMaNcc" layoutX="128.0" layoutY="143.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="25.0" layoutY="181.0" text="Tên nhà cung cấp" />
+      <TextField fx:id="txtTenNcc" editable="false" layoutX="128.0" layoutY="177.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="txtTenNV" editable="false" layoutX="439.0" layoutY="181.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="336.0" layoutY="185.0" text="Tên nhân viên" />
+      <ComboBox fx:id="cbMaNV" layoutX="439.0" layoutY="147.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="336.0" layoutY="151.0" text="Mã nhân viên" />
+      <Label layoutX="335.0" layoutY="111.0" text="Chọn nhân viên" textFill="#2c018a">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <TextField fx:id="txtTenHang" editable="false" layoutX="128.0" layoutY="280.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="25.0" layoutY="284.0" text="Tên hàng" />
+      <ComboBox fx:id="cbMaHang" layoutX="128.0" layoutY="246.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="25.0" layoutY="250.0" text="Mã hàng" />
+      <Label layoutX="27.0" layoutY="213.0" text="Chọn mặt hàng" textFill="#2c018a">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="21.0" layoutY="318.0" text="Số lượng" />
+      <TextField fx:id="txtSoLuong" layoutX="128.0" layoutY="314.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="374.0" layoutY="213.0" text="Thông tin mặt hàng" textFill="#2c018a">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="370.0" layoutY="250.0" text="Đon vị tính" />
+      <TextField fx:id="txtDonViTinh" editable="false" layoutX="438.0" layoutY="246.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="txtGiaNhap" editable="false" layoutX="438.0" layoutY="280.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="370.0" layoutY="284.0" text="Giá nhập" />
+      <TextField fx:id="txtGiaBan" editable="false" layoutX="440.0" layoutY="314.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="370.0" layoutY="318.0" text="Giá bán" />
+      <Button layoutX="25.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleBtnThemMoi" text="Thêm mới" />
+      <Button layoutX="101.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleButtonLuu" prefHeight="25.0" prefWidth="58.0" text="Lưu" />
+      <TableView fx:id="tbDonNhap" layoutX="19.0" layoutY="399.0" prefHeight="189.0" prefWidth="696.0">
+        <columns>
+          <TableColumn fx:id="maHoaDon" prefWidth="75.0" text="Mã hòa đơn" />
+          <TableColumn fx:id="ngayLap" prefWidth="106.0" text="Ngày đặt hàng" />
+            <TableColumn fx:id="tenHang" prefWidth="170.0" text="Tên hàng" />
+            <TableColumn fx:id="soLuong" prefWidth="73.0" text="Số luọng" />
+            <TableColumn fx:id="donViTinh" prefWidth="94.0" text="Đơn vị tính" />
+            <TableColumn fx:id="giaNhap" prefWidth="82.0" text="Giá nhập" />
+            <TableColumn fx:id="thanhTien" prefWidth="95.0" text="Thanh tiên" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

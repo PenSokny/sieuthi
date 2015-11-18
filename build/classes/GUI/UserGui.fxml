@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="478.0" prefWidth="487.0" stylesheets="@../../../../../Desktop/bai%20tap%20lon%20java/QuanlySieuthi_JavaFx/QuanlySieuthi_JavaFx/src/gui/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+   <children>
+      <TextField fx:id="txtUsername" layoutX="201.0" layoutY="67.0" />
+      <Label layoutX="109.0" layoutY="71.0" text="Username" />
+      <Label layoutX="205.0" layoutY="14.0" text="Tài Khoản" textFill="#0313b9">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="109.0" layoutY="104.0" text="Password" />
+      <TextField fx:id="txtPassword" layoutX="201.0" layoutY="100.0" />
+      <Label layoutX="109.0" layoutY="138.0" text="Role" />
+      <ComboBox fx:id="cbRole" layoutX="201.0" layoutY="134.0" prefWidth="150.0" />
+      <Button layoutX="205.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleButtonLuu" prefHeight="25.0" prefWidth="50.0" text="Lưu" />
+      <Button layoutX="109.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleButtonThemMoi" prefHeight="25.0" prefWidth="85.0" text="Thêm mói" />
+      <TableView fx:id="tbUser" layoutX="83.0" layoutY="239.0" prefHeight="200.0" prefWidth="363.0">
+        <columns>
+          <TableColumn fx:id="colUser" prefWidth="162.0" text="Username" />
+          <TableColumn fx:id="colRole" prefWidth="187.0" text="Role" />
+        </columns>
+      </TableView>
+      <Button layoutX="264.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleButtonXoa" text="Xóa" />
+      <ImageView fitHeight="100.0" fitWidth="101.0" layoutX="2.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@anh9.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

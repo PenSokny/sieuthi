@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NhaCCController">
+   <children>
+      <Label layoutX="78.0" layoutY="6.0" text="Nhập thông tin nhà cung cấp" textFill="#4312e4">
+         <font>
+            <Font name="Times New Roman Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="66.0" text="Mã nhà cùng cấp" />
+      <Label layoutX="37.0" layoutY="108.0" text="Tên nhà cùng cấp" />
+      <Label layoutX="350.0" layoutY="66.0" text="Số điện thoại" />
+      <Label layoutX="350.0" layoutY="108.0" text="Địa chỉ" />
+      <TextField fx:id="txtmaNCC" layoutX="151.0" layoutY="62.0" />
+      <TextField fx:id="txtTenNCC" layoutX="151.0" layoutY="104.0" />
+      <TextField fx:id="txtSDD" layoutX="436.0" layoutY="62.0" />
+      <TextField fx:id="txtDiaChi" layoutX="437.0" layoutY="104.0" />
+      <TableView fx:id="tblNcc" layoutX="4.0" layoutY="186.0" prefHeight="200.0" prefWidth="593.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="186.0">
+        <columns>
+          <TableColumn fx:id="maNCC" prefWidth="114.0" text="Mã nhà cùng cấp" />
+          <TableColumn fx:id="tenNCC" prefWidth="224.0" text="Tên nhà cùng cấp" />
+            <TableColumn fx:id="diaChi" prefWidth="114.0" text="Địa Chỉ" />
+            <TableColumn fx:id="SDD" prefWidth="140.0" text="Số điện thoại " />
+        </columns>
+      </TableView>
+      <Button layoutX="37.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonThem" text="Thêm Mới" />
+      <Button layoutX="131.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonLuu" text="Lưu" />
+      <Button layoutX="181.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonSua" text="Sửa" />
+      <Button layoutX="249.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonXoa" text="Xóa" />
+   </children>
+</AnchorPane>
