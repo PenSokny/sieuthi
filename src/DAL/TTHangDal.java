@@ -34,7 +34,7 @@ public class TTHangDal {
     
     public ObservableList<String> loadDataMaNcc(){
         try{
-            resultSet=db.loadData("SELLECT maNCC FROM nhacungcap");
+            resultSet=db.loadData("SELECT maNCC FROM nhacungcap");
             while(resultSet.next()){
                 dataMaNcc.add(resultSet.getString("maNCC"));
             }
@@ -48,13 +48,13 @@ public class TTHangDal {
     
     public String loadDataTenNcc(NhaCCDTO nCCDto){
         
-        String tenNcc=null;
+        String tenNCC=null;
         try{
             if(!nCCDto.getMaNcc().isEmpty()){
                 String sqlCode="select maNCC from nhacungcap where maNCC='"+nCCDto.getMaNcc()+"'";
                 resultSet=db.loadData(sqlCode);
                 if(resultSet.next()){
-                    tenNcc=resultSet.getString("tenNCC");
+                    tenNCC=resultSet.getString("maNCC");
                 }
             }
             resultSet.close();
@@ -62,31 +62,32 @@ public class TTHangDal {
         }catch(SQLException ex){
             Logger.getLogger(TTHangDal.class.getName()).log(Level.SEVERE, null,ex);
         }
-        return tenNcc;
+        return tenNCC;
     }
     
-    public ObservableList<HangDTO> loadData(HangDTO hangDto){
+    public ObservableList<HangDTO> loadData(ResultSet resultSet){
         try{
             String maHang;
             String tenHang;
             //String tenNcc;
-            String maNcc;
+            String maNCC;
             String ghiChu;
             String donViTinh;
             double giaBan;
             double giaNhap;
-            LocalDate ngayHSD;
+            String ngayHSD;
+            
             while(resultSet.next()){
                 maHang=resultSet.getString("maHang");
                 tenHang=resultSet.getString("tenHang");
-                maNcc=resultSet.getString("maNCC");
+                maNCC=resultSet.getString("maNCC");
                 donViTinh=resultSet.getString("donViTinh");
                 giaNhap=Double.parseDouble("giaNhap");
                 giaBan=Double.parseDouble("giaBan");
                 ghiChu=resultSet.getString("ghiChu");
-                ngayHSD = resultSet.getString("NgayHSD");
+                ngayHSD = resultSet.getString("ngayHSD");
                 
-               data.add(new HangDTO(maHang,tenHang,maNcc,donViTinh,giaNhap,giaBan,ghiChu,ngayHSD));
+               data.add(new HangDTO(maHang,tenHang,maNCC,donViTinh,giaNhap,giaBan,ghiChu,ngayHSD));
     
             }
             resultSet.close();
@@ -98,7 +99,7 @@ public class TTHangDal {
     }
     
     public ResultSet getHang(){
-        resultSet=db.loadData("select*from hang");
+        resultSet=db.loadData("select* from hang");
         return resultSet;
     }
     
@@ -113,11 +114,11 @@ public class TTHangDal {
     public int saveData(HangDTO hangDto)
     {
       
-        String sql="INSERT INTO hang(maHang,tenHang,maNCC ,donViTinh, giaNhap, giaBan,ghiChu, ngayHSD) VALUES("
+            String sql="INSERT INTO hang(maHang, tenHang, maNCC, donViTinh, giaNhap, giaBan, ghiChu, ngayHSD) VALUES("
                 + "'"+ hangDto.getMaHang()+"',"
-                + "'"+ hangDto.getTenHang()+"',"
+                + "'"+ hangDto.getTenHang()+"',"          
                 + "'"+ hangDto.getMaNCC()+ "',"
-                + "'"+hangDto.getDonViTinh()+"',"
+                + "'"+hangDto.getDonViTinh() +"',"
                 + hangDto.getGiaNhap() +","
                 + hangDto.getGiaBan() + ","
                 + "'"+ hangDto.getGhiChu() +  "',"

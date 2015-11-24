@@ -20,7 +20,7 @@ public class NhaCCDTO {
 
     
     
-    public NhaCCDTO(String maNcc, String tenNcc, String soDt, String diaChi) {
+    public NhaCCDTO(String maNcc, String tenNcc, String diaChi, String soDt) {
         this.maNcc = maNcc;
         this.tenNcc = tenNcc;
         this.soDt = soDt;

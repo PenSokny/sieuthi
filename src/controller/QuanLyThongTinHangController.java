@@ -56,7 +56,7 @@ public class QuanLyThongTinHangController implements Initializable{
     TableColumn<HangDTO,String> ghiChu;
     @FXML
     TableColumn<HangDTO,String> ngayHSD;
-    
+   
     
     @FXML
     TextField txtMaHang;
@@ -65,7 +65,7 @@ public class QuanLyThongTinHangController implements Initializable{
     TextField txtTenHang;
 
     @FXML
-    ComboBox cbMaNhaCungCap;
+    ComboBox cbMaNCC;
     
     @FXML
     TextField txtMaNCC;
@@ -94,25 +94,27 @@ public class QuanLyThongTinHangController implements Initializable{
     
     
      public void loadData(){
-         maHang.setCellValueFactory(new PropertyValueFactory("maHang"));
-         tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
-         maNCC.setCellValueFactory(new PropertyValueFactory("maNCC"));
-         donViTinh.setCellValueFactory(new PropertyValueFactory("donviTinh"));
-         giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
-         giaBan.setCellValueFactory(new PropertyValueFactory("giaBan"));
-         ghiChu.setCellValueFactory(new PropertyValueFactory("ghiChu"));
-         ngayHSD.setCellValueFactory(new PropertyValueFactory("ngayHSD"));
+            maHang.setCellValueFactory(new PropertyValueFactory("maHang"));
+            tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
+            maNCC.setCellValueFactory(new PropertyValueFactory("maNCC"));
+            //tenNCC.setCellValueFactory(new PropertyValueFactory("tenNCC"));
+            donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));
+            giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
+            giaBan.setCellValueFactory(new PropertyValueFactory("giaBan"));
+            ghiChu.setCellValueFactory(new PropertyValueFactory("ghiChu"));
+            ngayHSD.setCellValueFactory(new PropertyValueFactory("ngayHSD"));
          
          
-          tbTTHang.getItems().clear();
+            tbTTHang.getItems().clear();
+            tbTTHang.setItems(ttHangDal.loadData(ttHangDal.getHang()));
           
         }
      
     public void themMoi(){
        txtMaHang.setText("");
        txtTenHang.setText("");
-       cbMaNhaCungCap.getSelectionModel().select("");
-       txtMaNCC.setText("");
+       cbMaNCC.getSelectionModel().select("");
+       //txtTenNCC.setText("");
        txtDonViTinh.setText("");
        txtGiaNhap.setText("");
        txtGiaBan.setText("");
@@ -124,82 +126,37 @@ public class QuanLyThongTinHangController implements Initializable{
     public boolean validate(){
         boolean maTTHangEmpty=form.textIsEmtpy(txtMaHang, "Vui lòng nhập Mã Hàng");
         boolean tenTTHangEmpty=form.textIsEmtpy(txtTenHang, "Vui lòng nhập tên hàng");
-        boolean maNCC=form.comboBoxIsEmtpy(cbMaNhaCungCap, "Vui lòng lựa chọn");
+        boolean maNCC=form.comboBoxIsEmtpy(cbMaNCC, "Vui lòng lựa chọn");
+        //boolean tenNCC=form.textIsEmtpy(txtTenNCC, "Vui lòng nhập tên");
         boolean donViTinhEmpty=form.textIsEmtpy(txtDonViTinh, "Vui lòng nhập đơn vị tính");
         boolean giaNhapIsNumber=form.textIsNumberic(txtGiaNhap, "Giá nhập phải là số");
         boolean giaNhapEmpty=form.textIsEmtpy(txtGiaNhap, "Vui lòng nhập giá nhập");
         boolean giaBanIsNumber=form.textIsNumberic(txtGiaBan, "Giá bán phải là số");
         boolean giaBanEmpty=form.textIsEmtpy(txtGiaBan, "Vui lòng nhập giá bán");
            
-        if(!maTTHangEmpty && !tenTTHangEmpty && !maNCC && !donViTinhEmpty && !giaNhapEmpty && !giaBanEmpty && giaNhapIsNumber && giaBanIsNumber)
+        if(!maTTHangEmpty && !tenTTHangEmpty && !maNCC  && !donViTinhEmpty && !giaNhapEmpty && !giaBanEmpty && giaNhapIsNumber && giaBanIsNumber)
           return true;
         return false;    
     }
     
-    
-    @FXML
-    private void handleButtonThemMoi(ActionEvent even){
-        themMoi();
-    }
-    
-    @FXML
-    private void handleButtonLuu(ActionEvent even){
-        
-        if(validate()){   
-            
-               hangDTO.setMaHang(txtMaHang.getText());
-               hangDTO.setTenHang(txtTenHang.getText());    
-               hangDTO.setMaNCC(cbMaNhaCungCap.getSelectionModel().getSelectedItem().toString());
-               hangDTO.setDonViTinh(txtDonViTinh.getText());
-               hangDTO.setGiaNhap(Double.parseDouble(txtGiaNhap.getText()));
-               hangDTO.setGiaBan(Double.parseDouble(txtGiaBan.getText()));
-               hangDTO.setGhiChu(txtGhiChu.getText());
-               hangDTO.setNgayHSD(ngayhsd.getValue().toString());
-               int result=ttHangDal.saveData(hangDTO);
-               khoSPDto.setMaHang(txtMaHang.getText());
-               int resultKho=ttHangDal.saveKhoSanPham(khoSPDto);
-               
-               if(result>0 && resultKho>0)
-              {    
-                 loadData();
-                 themMoi();
-                 JOptionPane.showMessageDialog(null, "Luu thanh cong"); 
-                 
-               
-               }
-               else
-                  JOptionPane.showMessageDialog(null, "Chua luu duoc."); 
-         }
-        
-    }
-    @FXML
-    private void handleButtonUpdate(ActionEvent even){
-        
-    }
-    @FXML
-    private void handleButtonXoa(ActionEvent even){
-        
-    }
-    
-    
     @Override
-    public void initialize(URL location, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {
         
-                     loadData();
+            loadData();
              
             // Handle ListView selection changes.
              
             SimpleDateFormat oldFormat = new SimpleDateFormat("dd-MM-yyyy");
             SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd"); 
         
-           tbTTHang.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends HangDTO> observable, HangDTO oldValue, HangDTO newValue) -> {
+            tbTTHang.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->{
                 try {
                         int i=tbTTHang.getSelectionModel().getSelectedIndex();
                         if(i>=0){
                             txtMaHang.setText(newValue.getMaHang());
                             txtTenHang.setText(newValue.getTenHang());
                     
-                            cbMaNhaCungCap.getSelectionModel().select(newValue.getMaNCC());
+                            cbMaNCC.getSelectionModel().select(newValue.getMaNCC());
                             txtDonViTinh.setText(newValue.getDonViTinh());
                             txtGiaNhap.setText(String.format("%.0f",newValue.getGiaNhap()));
                             txtGiaBan.setText(String.format("%.0f", newValue.getGiaBan()));
@@ -208,7 +165,7 @@ public class QuanLyThongTinHangController implements Initializable{
                    
                         } 
                     }catch(ParseException ex){
-                     Logger.getLogger(QuanLyThongTinHangController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(QuanLyThongTinHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
      
         });
@@ -243,15 +200,64 @@ public class QuanLyThongTinHangController implements Initializable{
          
 
         
-        cbMaNhaCungCap.getItems().clear();
-        cbMaNhaCungCap.setItems(ttHangDal.loadDataMaNcc());
+            cbMaNCC.getItems().clear();
+            cbMaNCC.setItems(ttHangDal.loadDataMaNcc());
         
-        cbMaNhaCungCap.setOnAction((event) -> {
-        nCCDto.setMaNcc(cbMaNhaCungCap.getSelectionModel().getSelectedItem().toString());
-        txtMaNCC.setText(ttHangDal.loadDataTenNcc(nCCDto)); 
-        } ); 
+            cbMaNCC.setOnAction((event) -> {
+                nCCDto.setMaNcc(cbMaNCC.getSelectionModel().getSelectedItem().toString());
+                txtMaNCC.setText(ttHangDal.loadDataTenNcc(nCCDto)); 
+            } ); 
      
         
     }
+    
+    
+    @FXML
+    private void handleButtonThemMoi(ActionEvent even){
+        themMoi();
+    }
+    
+    @FXML
+    private void handleButtonLuu(ActionEvent even){
+        
+         if(validate()){
+               
+               hangDTO.setMaHang(txtMaHang.getText());
+               hangDTO.setTenHang(txtTenHang.getText());    
+               hangDTO.setMaNCC(cbMaNCC.getSelectionModel().getSelectedItem().toString());
+               hangDTO.setDonViTinh(txtDonViTinh.getText());
+               hangDTO.setGiaNhap(Double.parseDouble(txtGiaNhap.getText()));
+               hangDTO.setGiaBan(Double.parseDouble(txtGiaBan.getText()));
+               hangDTO.setGhiChu(txtGhiChu.getText());
+               hangDTO.setNgayHSD(ngayhsd.getValue().toString());
+               int result=ttHangDal.saveData(hangDTO);
+               khoSPDto.setMaHang(txtMaHang.getText());
+               int resultKho=ttHangDal.saveKhoSanPham(khoSPDto);
+               
+              if(result>0 && resultKho>0)
+              {    
+                 loadData();
+                 themMoi();
+                 JOptionPane.showMessageDialog(null, "Lưu thành công!"); 
+                 
+               
+               }
+               else
+                  JOptionPane.showMessageDialog(null, "Chưa lưu được!"); 
+
+         }
+          
+      
+         
+    }
+    @FXML
+    private void handleButtonUpdate(ActionEvent even){
+        
+    }
+    @FXML
+    private void handleButtonXoa(ActionEvent even){
+        
+    }
+}   
               
-}
+

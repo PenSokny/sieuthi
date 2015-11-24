@@ -20,9 +20,10 @@ public class HangDTO {
     private double giaNhap;
     private double giaBan;
     private String donViTinh;
-    private LocalDate ngayHSD;
+    private String ngayHSD;
     
     public HangDTO() {
+        
     }
 /*
     public HangDTO(String maHang, String tenHang, String donViTinh, String ghiChu, String maNCC, double giaNhap, double giaBan, LocalDate ngayHSD) {
@@ -37,7 +38,7 @@ public class HangDTO {
     }
 */
 
-    public HangDTO(String maHang, String tenHang, String maNcc, String donViTinh, double giaNhap, double giaBan, String ghiChu, LocalDate ngayHSD) {
+    public HangDTO(String maHang, String tenHang, String maNcc, String donViTinh, double giaNhap, double giaBan, String ghiChu, String ngayHSD) {
         this.maHang = maHang;
         this.tenHang = tenHang;
         this.donViTinh = donViTinh;
@@ -47,6 +48,7 @@ public class HangDTO {
         this.giaBan = giaBan;
         this.ngayHSD = ngayHSD;
     }
+
 
     public String getTenHang() {
         return tenHang;
@@ -112,11 +114,11 @@ public class HangDTO {
         this.donViTinh = donViTinh;
     }
 
-    public LocalDate getNgayHSD() {
-        return ngayHSD;
-    }
-
-    public void setNgayHSD(LocalDate ngayHSD) {
+    public void setNgayHSD(String ngayHSD) {
         this.ngayHSD = ngayHSD;
+    }
+    
+    public String getNgayHSD() {
+        return ngayHSD;
     }
 }

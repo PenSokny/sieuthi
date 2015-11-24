@@ -41,7 +41,7 @@ public class DatabaseManager {
             resultSet=statement.executeQuery(sqlCode);
             
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Có lỗi.Hãy kiếm trả lại.");  
+            JOptionPane.showMessageDialog(null, "Có lỗi. Hãy kiếm trả lại.");  
             JOptionPane.showMessageDialog(null, ex);
         }
         return resultSet;

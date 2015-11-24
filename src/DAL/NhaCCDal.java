@@ -70,4 +70,16 @@ public class NhaCCDal {
         int result=db.executeData(sqlCode);
         return result;
     }   
+    
+    public ResultSet timNccTheoMa(NhaCCDTO nccDto)
+    {
+        resultSet=db.loadData("SELECT * FROM nhacungcap WHERE maNCC='"+nccDto.getMaNcc()+"'");
+        return resultSet;
+    }
+    
+    public ResultSet timNccTheoTen(NhaCCDTO nccDto)
+    {
+        resultSet=db.loadData("SELECT * FROM nhacungcap WHERE tenNCC like '%"+nccDto.getTenNcc()+"%'");
+        return resultSet;
+    }
 }

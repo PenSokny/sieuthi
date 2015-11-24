@@ -63,7 +63,7 @@
             <TableColumn fx:id="soLuong" prefWidth="73.0" text="Số luọng" />
             <TableColumn fx:id="donViTinh" prefWidth="94.0" text="Đơn vị tính" />
             <TableColumn fx:id="giaNhap" prefWidth="82.0" text="Giá nhập" />
-            <TableColumn fx:id="thanhTien" prefWidth="95.0" text="Thanh tiên" />
+            <TableColumn fx:id="thanhTien" prefWidth="95.0" text="Thành tiền" />
         </columns>
       </TableView>
    </children>
