@@ -87,7 +87,7 @@ public class TTHangDal {
                 ghiChu=resultSet.getString("ghiChu");
                 ngayHSD = resultSet.getString("ngayHSD");
                 
-               data.add(new HangDTO(maHang,tenHang,maNCC,donViTinh,giaNhap,giaBan,ghiChu,ngayHSD));
+               data.add(new HangDTO(maHang,tenHang, maNCC, donViTinh, giaNhap, giaBan, ghiChu, ngayHSD));
     
             }
             resultSet.close();
@@ -127,5 +127,21 @@ public class TTHangDal {
         int result=db.executeData(sql);
         return result;
     }
+    
+     public int deleteData(HangDTO hangDto)
+    {
+      String sql="DELETE FROM hang WHERE maHang='"+hangDto.getMaHang()+"'";
+      int result=db.executeData(sql);
+      return result;
+    }
+    
+   public int updateData(HangDTO hangDto, String ma)
+   {
+      String sql="UPDATE hang SET maHang = '" +hangDto.getMaHang() + "',tenHang='"+ hangDto.getTenHang() +
+                                           "',maNCC ='"+hangDto.getMaNCC() +"',donViTinh='"+hangDto.getDonViTinh() + "',giaNhap ='" + hangDto.getGiaNhap()  + 
+                                           "',giaBan ='" + hangDto.getGiaBan()  + "',ghiChu ='" + hangDto.getGhiChu()  +  "',ngayHSD ='" + hangDto.getNgayHSD()  + "' WHERE maHang=  '" + ma + "'" ;
+      int result=db.executeData(sql);
+      return result;
+   }
             
 }

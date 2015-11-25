@@ -197,9 +197,7 @@ public class QuanLyThongTinHangController implements Initializable{
             }
         });
          
-         
 
-        
             cbMaNCC.getItems().clear();
             cbMaNCC.setItems(ttHangDal.loadDataMaNcc());
         
@@ -207,8 +205,7 @@ public class QuanLyThongTinHangController implements Initializable{
                 nCCDto.setMaNcc(cbMaNCC.getSelectionModel().getSelectedItem().toString());
                 txtMaNCC.setText(ttHangDal.loadDataTenNcc(nCCDto)); 
             } ); 
-     
-        
+  
     }
     
     
@@ -241,18 +238,56 @@ public class QuanLyThongTinHangController implements Initializable{
                }else
                   JOptionPane.showMessageDialog(null, "Chưa lưu được!"); 
 
-         }
-          
-      
-         
+         }       
     }
+    
     @FXML
     private void handleButtonUpdate(ActionEvent even){
-        
+        int i=tbTTHang.getSelectionModel().getSelectedIndex();
+      
+        if(i>=0){
+            if(validate()){
+                hangDTO.setMaHang(txtMaHang.getText());
+                hangDTO.setTenHang(txtTenHang.getText());
+                hangDTO.setMaNCC(cbMaNCC.getSelectionModel().getSelectedItem().toString());
+                hangDTO.setDonViTinh(txtDonViTinh.getText());
+                hangDTO.setGiaNhap(Double.parseDouble(txtGiaNhap.getText()));
+                hangDTO.setGiaBan(Double.parseDouble(txtGiaBan.getText()));
+                hangDTO.setGhiChu(txtGhiChu.getText());
+                hangDTO.setNgayHSD(ngayhsd.getValue().toString());
+
+                String ma=tbTTHang.getSelectionModel().getSelectedItem().getMaHang();
+
+                if(ttHangDal.updateData(hangDTO,ma)>0){
+                   loadData();
+                   themMoi();
+                   JOptionPane.showMessageDialog(null, "Update thành công");
+              }
+
+            }
+            
+      }
+      else
+            JOptionPane.showMessageDialog(null, "Hãy chọn một sản phẩm để sua.");
     }
+    
     @FXML
     private void handleButtonXoa(ActionEvent even){
-        
+        int i=tbTTHang.getSelectionModel().getSelectedIndex();
+      
+      if(i>=0)
+      {
+         hangDTO.setMaHang(tbTTHang.getSelectionModel().getSelectedItem().getMaHang());
+         if(ttHangDal.deleteData(hangDTO)>0)
+        {
+            loadData();
+            themMoi();
+            JOptionPane.showMessageDialog(null, "Xóa thành công");
+        }
+          
+      }
+      else
+          JOptionPane.showMessageDialog(null, "Hãy chọn một sản phẩm để xóa.");
     }
 }   
               
