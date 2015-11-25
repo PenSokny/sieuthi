@@ -6,7 +6,7 @@
 package controller;
 
 import DAL.NhanVienDal;
-import DAL.TimNVDal;
+import DAL.TimNVDAL;
 import DTO.NhanVienDTO;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -40,7 +40,7 @@ public class TimNVController implements Initializable {
     FormValidation form=new FormValidation();
     NhanVienDTO nvDto= new NhanVienDTO();
     NhanVienDal nvDal=new NhanVienDal();
-    TimNVDal timNVDal=new TimNVDal();
+    TimNVDAL timNVDal=new TimNVDAL();
     ResultSet resultSet;
        
     

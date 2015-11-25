@@ -234,15 +234,11 @@ public class QuanLyThongTinHangController implements Initializable{
                khoSPDto.setMaHang(txtMaHang.getText());
                int resultKho=ttHangDal.saveKhoSanPham(khoSPDto);
                
-              if(result>0 && resultKho>0)
-              {    
+              if(result>0 && resultKho>0){    
                  loadData();
                  themMoi();
-                 JOptionPane.showMessageDialog(null, "Lưu thành công!"); 
-                 
-               
-               }
-               else
+                 JOptionPane.showMessageDialog(null, "Lưu thành công!");   
+               }else
                   JOptionPane.showMessageDialog(null, "Chưa lưu được!"); 
 
          }
