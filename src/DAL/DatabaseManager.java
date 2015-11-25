@@ -20,7 +20,7 @@ public class DatabaseManager {
    private ResultSet resultSet;
    
     private final String DRIVER="com.mysql.jdbc.Driver";
-    private final String DATABASE= "jdbc:mysql://localhost:3306/quanlysieuthi";
+    private final String DATABASE= "jdbc:mysql://localhost:3306/supermarket";
     
     
     public DatabaseManager() {

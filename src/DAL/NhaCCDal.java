@@ -53,7 +53,7 @@ public class NhaCCDal {
     }
     
     public int saveData(NhaCCDTO nCCDto){
-        String sqlCode="insert into nhacungcap values('"+nCCDto.getMaNcc()+"','"+nCCDto.getTenNcc()+"','"+nCCDto.getSoDt()+"','"+nCCDto.getDiaChi()+"')";
+        String sqlCode="insert into nhacungcap values('"+nCCDto.getMaNcc()+"','"+nCCDto.getTenNcc()+"','"+nCCDto.getDiaChi()+"','"+nCCDto.getSoDt()+"')";
         int result=db.executeData(sqlCode);
         return result;
         
