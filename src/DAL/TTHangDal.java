@@ -82,8 +82,8 @@ public class TTHangDal {
                 tenHang=resultSet.getString("tenHang");
                 maNCC=resultSet.getString("maNCC");
                 donViTinh=resultSet.getString("donViTinh");
-                giaNhap=Double.parseDouble("giaNhap");
-                giaBan=Double.parseDouble("giaBan");
+                giaNhap=Double.parseDouble(resultSet.getString("giaNhap"));
+                giaBan=Double.parseDouble(resultSet.getString("giaBan"));
                 ghiChu=resultSet.getString("ghiChu");
                 ngayHSD = resultSet.getString("ngayHSD");
                 

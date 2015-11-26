@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyThongTinHangController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="952.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyThongTinHangController">
    <children>
       <Label layoutX="288.0" layoutY="14.0" text="Quản Lý Thông Tin Hàng" textFill="#5410c9">
          <font>
@@ -25,16 +25,16 @@
       <Button layoutX="154.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleButtonLuu" text="Lưu" />
       <Button layoutX="69.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonUpdate" text="Sửa" />
       <Button layoutX="154.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonXoa" text="Xóa" />
-      <TableView fx:id="tbTTHang" layoutX="209.0" layoutY="60.0" prefHeight="319.0" prefWidth="604.0">
+      <TableView fx:id="tbTTHang" layoutX="209.0" layoutY="60.0" prefHeight="319.0" prefWidth="734.0">
         <columns>
           <TableColumn fx:id="maHang" prefWidth="63.0" text="Mã hàng" />
-          <TableColumn fx:id="tenHang" prefWidth="124.0" text="Tên hàng" />
-            <TableColumn fx:id="maNCC" prefWidth="60.0" text="Mã NCC" />
-            <TableColumn fx:id="giaNhap" prefWidth="88.0" text="Giá Nhập" />
-            <TableColumn fx:id="giaBan" prefWidth="52.0" text="Giá Bán" />
-            <TableColumn fx:id="donViTinh" prefWidth="66.0" text="Đơn Vị Tính" />
-            <TableColumn fx:id="ghiChu" prefWidth="84.0" text="Ghi Chu" />
-            <TableColumn fx:id="ngayHSD" prefWidth="66.0" text="Ngày HSD" />
+          <TableColumn fx:id="tenHang" prefWidth="117.0" text="Tên hàng" />
+            <TableColumn fx:id="maNCC" prefWidth="61.0" text="Mã NCC" />
+            <TableColumn fx:id="giaNhap" prefWidth="77.0" text="Giá Nhập" />
+            <TableColumn fx:id="giaBan" prefWidth="92.0" text="Giá Bán" />
+            <TableColumn fx:id="donViTinh" prefWidth="78.0" text="Đơn Vị Tính" />
+            <TableColumn fx:id="ghiChu" prefWidth="104.0" text="Ghi Chu" />
+            <TableColumn fx:id="ngayHSD" prefWidth="144.0" text="Ngày HSD" />
         </columns>
       </TableView>
       <TextField fx:id="txtMaHang" layoutX="70.0" layoutY="60.0" prefHeight="25.0" prefWidth="121.0" />
