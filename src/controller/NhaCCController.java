@@ -76,11 +76,6 @@ public class NhaCCController implements Initializable{
           return true;
         return false;
     }
-    @FXML
-    private void handleButtonThem(ActionEvent event){
-        themMoi();
-        
-    }
     
     @FXML
     private void handleButtonLuu(ActionEvent event){

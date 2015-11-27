@@ -21,10 +21,9 @@
       <Label layoutX="14.0" layoutY="289.0" text="Giá bán" />
       <Label layoutX="14.0" layoutY="332.0" text="Ghi chú" />
       <Label layoutX="7.0" layoutY="371.0" text="Ngày HSD" />
-      <Button layoutX="69.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleButtonThemMoi" text="Thêm" />
-      <Button layoutX="154.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleButtonLuu" text="Lưu" />
-      <Button layoutX="69.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonUpdate" text="Sửa" />
-      <Button layoutX="154.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleButtonXoa" text="Xóa" />
+      <Button layoutX="69.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleButtonLuu" prefHeight="25.0" prefWidth="59.0" text="Lưu" />
+      <Button layoutX="155.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleButtonUpdate" prefHeight="25.0" prefWidth="59.0" text="Sửa" />
+      <Button layoutX="270.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleButtonXoa" prefHeight="25.0" prefWidth="48.0" text="Xóa" />
       <TableView fx:id="tbTTHang" layoutX="209.0" layoutY="60.0" prefHeight="319.0" prefWidth="734.0">
         <columns>
           <TableColumn fx:id="maHang" prefWidth="63.0" text="Mã hàng" />

@@ -210,11 +210,6 @@ public class QuanLyThongTinHangController implements Initializable{
     
     
     @FXML
-    private void handleButtonThemMoi(ActionEvent even){
-        themMoi();
-    }
-    
-    @FXML
     private void handleButtonLuu(ActionEvent even){
         
          if(validate()){

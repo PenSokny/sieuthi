@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +61,7 @@ public class TimNCCController implements Initializable {
            loadData(resultSet);
            
        }
+       else JOptionPane.showMessageDialog(null, "Khong Tim Thay ma Nha Cung Cap.");
     }
     
     @FXML
@@ -70,6 +72,7 @@ public class TimNCCController implements Initializable {
            resultSet=nccDal.timNccTheoTen(nccDto);
            loadData(resultSet);
        }
+       else JOptionPane.showMessageDialog(null, "Khong Tim Thay Ten.");
     }
     
     @FXML

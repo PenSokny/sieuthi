@@ -114,10 +114,7 @@ public class NhanVienController implements Initializable{
         
     }
     
-    @FXML
-    private void handleButtonThemMoi(ActionEvent event){
-        themMoi();
-    }
+
     
     @FXML
     private void handleButtonLuu(ActionEvent event){

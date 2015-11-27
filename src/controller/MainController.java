@@ -62,7 +62,7 @@ public class MainController implements Initializable{
     @FXML
     private void handleMenuItemTimHang(ActionEvent event){
      
-        scence.openNewWindow("/GUI/KiemTraHangGui.fxml", ParentControl);
+        scence.openNewWindow("/GUI/KiemTraHangGUI.fxml", ParentControl);
     }
     @FXML
     private void handleMenuLogin(ActionEvent event){

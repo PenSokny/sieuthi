@@ -28,9 +28,8 @@
             <TableColumn fx:id="SDD" prefWidth="140.0" text="Số điện thoại " />
         </columns>
       </TableView>
-      <Button layoutX="37.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonThem" text="Thêm Mới" />
-      <Button layoutX="131.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonLuu" text="Lưu" />
-      <Button layoutX="181.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonSua" text="Sửa" />
-      <Button layoutX="249.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonXoa" text="Xóa" />
+      <Button layoutX="37.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonLuu" text="Lưu" />
+      <Button layoutX="95.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonSua" text="Sửa" />
+      <Button layoutX="151.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonXoa" text="Xóa" />
    </children>
 </AnchorPane>
