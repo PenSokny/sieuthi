@@ -53,8 +53,7 @@
       <Label layoutX="370.0" layoutY="284.0" text="Giá nhập" />
       <TextField fx:id="txtGiaBan" editable="false" layoutX="440.0" layoutY="314.0" prefHeight="25.0" prefWidth="174.0" />
       <Label layoutX="370.0" layoutY="318.0" text="Giá bán" />
-      <Button layoutX="25.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleBtnThemMoi" text="Thêm mới" />
-      <Button layoutX="101.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleButtonLuu" prefHeight="25.0" prefWidth="58.0" text="Lưu" />
+      <Button layoutX="128.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleButtonLuu" prefHeight="25.0" prefWidth="72.0" text="Lưu" />
       <TableView fx:id="tbDonNhap" layoutX="19.0" layoutY="399.0" prefHeight="189.0" prefWidth="696.0">
         <columns>
           <TableColumn fx:id="maHoaDon" prefWidth="75.0" text="Mã hòa đơn" />

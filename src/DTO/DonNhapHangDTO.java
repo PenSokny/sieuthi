@@ -34,7 +34,7 @@ public class DonNhapHangDTO {
         return ngayNhapHang;
     }
 
-    public void setNgayNhaptHang(String ngayNhapHang) {
+    public void setNgayNhapHang(String ngayNhapHang) {
         this.ngayNhapHang = ngayNhapHang;
     }
 
@@ -126,7 +126,6 @@ public class DonNhapHangDTO {
         this.maHoaDon = maHoaDon;
      
         this.tenHang = tenHang;
-       
         this.soLuong = soLuong;
         this.donViTinh = donViTinh;
         this.giaNhap = giaNhap;

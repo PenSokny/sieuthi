@@ -5,10 +5,25 @@
  */
 package controller;
 
+import DAL.DonNhapHangDAL;
+import DTO.DonHangDTO;
 import DTO.DonNhapHangDTO;
+import DTO.HangDTO;
 import DTO.HangNhapDTO;
+import DTO.NhaCCDTO;
+import DTO.NhanVienDTO;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -19,6 +34,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.StringConverter;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -79,10 +96,34 @@ public class DonNhapHangController implements Initializable{
     @FXML
     TextField txtTenNV;
     
-    
+    HangDTO hangDto=new HangDTO();
     DonNhapHangDTO donHangDTO=new DonNhapHangDTO();
     HangNhapDTO hangNhapDTO=new HangNhapDTO();
+    DonNhapHangDAL donNhapHangDal=new DonNhapHangDAL();
+    NhaCCDTO nccDto= new NhaCCDTO();
+    DonHangDTO donHangDto=new DonHangDTO();
+    NhanVienDTO nvDto=new NhanVienDTO();
     FormValidation form=new FormValidation();
+    
+    public void xoaThongTinHang()
+    {
+        txtTenHang.setText("");
+        txtDonViTinh.setText("");
+        txtGiaBan.setText("");
+        txtGiaNhap.setText("");
+        txtSoLuong.setText("");
+    
+    }
+    
+    public void themmoi()
+    {
+       xoaThongTinHang();
+       txtMaHoaDon.setText("");
+       ngayNhapHang.setValue(LocalDate.now());
+       cbMaNcc.getSelectionModel().select("");
+       cbMaNV.getSelectionModel().select("");
+                  
+    }
     
     public boolean validate()
     {
@@ -99,8 +140,7 @@ public class DonNhapHangController implements Initializable{
         
     }
     
-    public void loadTabble()
-    {
+    public void loadTable(){
         //Load Data vao TableView
         maHoaDon.setCellValueFactory(new PropertyValueFactory("maHoaDon"));
         ngayLap.setCellValueFactory(new PropertyValueFactory("ngayDatHang"));
@@ -111,26 +151,49 @@ public class DonNhapHangController implements Initializable{
         thanhTien.setCellValueFactory(new PropertyValueFactory("thanhTien"));
         tbDonNhap.getItems().clear();
     
-    
     }
     
-    
-    @FXML
-    private void handleBtnThemMoi(ActionEvent event){
+    public void addTableView()
+    {
+         //Load Data vao TableView
+        ObservableList<DonNhapHangDTO> dataTableView=FXCollections.observableArrayList(); 
         
+        maHoaDon.setCellValueFactory(new PropertyValueFactory("maHoaDon"));
+      //  ngayLap.setCellValueFactory(new PropertyValueFactory("ngayDatHang"));
+        tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
+        soLuong.setCellValueFactory(new PropertyValueFactory("soLuong"));
+        donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));
+        giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
+        thanhTien.setCellValueFactory(new PropertyValueFactory("thanhTien"));
+        
+        dataTableView=donNhapHangDal.loadDataTbView(hangDto, hangNhapDTO, donHangDto, nccDto, nvDto);
+        tbDonNhap.setItems(dataTableView);
     }
+    
+
     @FXML
     private void handleButtonLuu(ActionEvent event){
         if(validate())
          {
                donHangDTO.setMaHoaDon(txtMaHoaDon.getText());
-               //donHangDTO.setNgayNhaptHang(ngayNhapHang.getValue());
+               //donHangDTO.setNgayNhapHang(ngayNhapHang.getValue());
                donHangDTO.setMaNV(cbMaNV.getSelectionModel().getSelectedItem().toString());
                donHangDTO.setMaNcc(cbMaNcc.getSelectionModel().getSelectedItem().toString());
 
                hangNhapDTO.setMaDonHang(txtMaHoaDon.getText());
                hangNhapDTO.setMaHang(cbMaHang.getSelectionModel().getSelectedItem().toString());
                hangNhapDTO.setSoLuong(Double.parseDouble(txtSoLuong.getText()));
+               
+               int result=donNhapHangDal.saveData(donHangDto, hangNhapDTO);
+               System.out.println(result);
+               if(result>0)
+               {
+                 loadTable();
+                 JOptionPane.showMessageDialog(null, "Luu thanh cong"); 
+                 themmoi();
+               }
+               else
+                   JOptionPane.showMessageDialog(null, "Chua luu duoc.");
          }
         
     }
@@ -138,7 +201,119 @@ public class DonNhapHangController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadTabble();
+        loadTable();
+        
+        // Handle ListView selection changes.
+        
+            SimpleDateFormat oldFormat = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");   
+        
+            tbDonNhap.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                
+            try {
+                int i=tbDonNhap.getSelectionModel().getSelectedIndex();
+                if(i>=0)
+                {
+                    txtMaHoaDon.setText(newValue.getMaHoaDon());
+                    ngayNhapHang.setValue(LocalDate.parse(newFormat.format(oldFormat.parse(newValue.getNgayNhapHang()))));
+                    cbMaNcc.getSelectionModel().select(newValue.getMaNcc());
+                    cbMaNV.getSelectionModel().select(newValue.getMaNV());
+                    cbMaHang.getSelectionModel().select(newValue.getMaHang());
+                    txtSoLuong.setText(String.format("%.0f" ,newValue.getSoLuong()));
+                }
+                
+            } catch (ParseException ex) {
+                Logger.getLogger(DonNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
+            }       
+           
+         });
+        
+        
+        //Data nha cung cap
+        cbMaNcc.getItems().clear();
+        cbMaNcc.setItems(donNhapHangDal.loadDataNCC());
+        
+        cbMaNcc.setOnAction((event) -> {
+           nccDto.setMaNcc(cbMaNcc.getSelectionModel().getSelectedItem().toString());
+           txtTenNcc.setText(donNhapHangDal.getTenNCC(nccDto)); 
+           
+           //Load Data Hang theo maNCC
+           xoaThongTinHang();
+           cbMaHang.getItems().clear();
+           cbMaHang.setItems(donNhapHangDal.loadDataHang(nccDto));
+           
+        });
+        
+        //Data Hang
+      
+        cbMaHang.setOnAction((event) -> {
+            
+            try {
+                if(cbMaHang.getSelectionModel().getSelectedIndex()>=0)
+                {
+                    hangDto.setMaHang(cbMaHang.getSelectionModel().getSelectedItem().toString());
+                
+                    ResultSet resultSet=donNhapHangDal.getTTHang(hangDto);
+                    if(resultSet.next())
+                    {
+                        txtTenHang.setText(resultSet.getString("tenHang"));
+                        txtDonViTinh.setText(resultSet.getString("donViTinh"));
+                        txtGiaBan.setText(resultSet.getString("giaBan"));
+                        txtGiaNhap.setText(resultSet.getString("giaNhap"));
+
+                    }
+
+                    resultSet.close();
+                }
+                    
+                   
+    
+            } catch (SQLException ex) {
+                Logger.getLogger(DonNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+              
+           
+        });
+        
+        //Data Nhan Vien
+        cbMaNV.getItems().clear();
+        cbMaNV.setItems(donNhapHangDal.loadDataNV());
+        
+        cbMaNV.setOnAction((event) -> {
+            
+            nvDto.setMaNhanVien(cbMaNV.getSelectionModel().getSelectedItem().toString());
+            txtTenNV.setText(donNhapHangDal.getTenNV(nvDto));
+            
+        });
+        
+       //Datepicker ngayNhapHang Format
+        
+        ngayNhapHang.setValue(LocalDate.now());
+        
+        String pattern = "dd-MM-yyyy";
+
+        ngayNhapHang.setConverter(new StringConverter<LocalDate>() {
+             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+             @Override 
+             public String toString(LocalDate date) {
+                 if (date != null) {
+                     return dateFormatter.format(date);
+                 } else {
+                     return "";
+                 }
+             }
+
+             @Override 
+             public LocalDate fromString(String string) {
+                 if (string != null && !string.isEmpty()) {
+                     return LocalDate.parse(string, dateFormatter);
+                 } else {
+                     return null;
+                 }
+             }
+         });
+        
     }
     
 }
