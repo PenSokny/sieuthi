@@ -103,6 +103,18 @@ public class TTHangDal {
         return resultSet;
     }
     
+    public ResultSet timHangTheoMa(HangDTO  hangDto)
+    {
+        resultSet=db.loadData("SELECT * FROM hang WHERE maHang='"+hangDto.getMaHang()+"'");
+        return resultSet;
+    }
+    
+    public ResultSet timHangTheoTen(HangDTO hangDto)
+    {
+        resultSet=db.loadData("SELECT * FROM hang WHERE tenHang like '%"+hangDto.getTenHang()+"%'");
+        return resultSet;
+    }
+    
     public int saveKhoSanPham(KhoSanPhamDTO khoSPDto)
      {
       

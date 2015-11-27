@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DTO.TimHangDTO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
@@ -19,6 +22,27 @@ import javafx.scene.control.TextField;
  * @author ERROR 405
  */
 public class KiemTraHangController implements Initializable{
+    
+    @FXML 
+    TableView<TimHangDTO> tbHang;
+    @FXML
+    TableColumn<TimHangDTO,String> maHang;
+    @FXML
+    TableColumn<TimHangDTO,String> tenHang;
+    @FXML
+    TableColumn<TimHangDTO,String> donViTinh;
+    @FXML
+    TableColumn<TimHangDTO,String> ncc;
+    @FXML
+    TableColumn<TimHangDTO,Double> giaNhap;
+    @FXML
+    TableColumn<TimHangDTO,Double> giaBan;
+    @FXML
+    TableColumn<TimHangDTO,String> ngayHSD;
+    @FXML
+    TableColumn<TimHangDTO,Double> soLuong;
+    @FXML
+    TableColumn<TimHangDTO,String> ghiChu;
     
     @FXML
     TextField txtTimMaHang;
