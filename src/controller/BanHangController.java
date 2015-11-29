@@ -20,36 +20,36 @@ import javafx.scene.control.*;
  */
 public class BanHangController implements Initializable{
     @FXML
-    TableView<BanHangDTO> tblBanHang;
+    TableView<BanHangDTO> tbBanHang;
     @FXML
-    TableColumn<BanHangDTO,String> colMa;
+    TableColumn<BanHangDTO,String> maSP;
     @FXML
-    TableColumn<BanHangDTO,String> colTenSanPham;
+    TableColumn<BanHangDTO,String> tenSanPham;
     @FXML
-    TableColumn<BanHangDTO,String> colSoLuong;
+    TableColumn<BanHangDTO,String> soLuong;
     @FXML
-    TableColumn<BanHangDTO,String> colDonGia;
+    TableColumn<BanHangDTO,String> donGia;
     @FXML
-    TableColumn<BanHangDTO,String> colDonViTinh;
+    TableColumn<BanHangDTO,String> donViTinh;
     @FXML
-    TableColumn<BanHangDTO,String> colThanhTien;
+    TableColumn<BanHangDTO,String> thanhTien;
         
     @FXML
-    TextField maSanPham;
+    TextField txtMaSP;
     @FXML
-    TextField tenSanPham;
+    TextField txtTenSP;
     @FXML
-    TextField donViTinh;
+    TextField txtDonViTinh;
     @FXML
-    TextField soLuong;
+    TextField txtSoLuong;
     @FXML
-    TextField donGia;
+    TextField txtDonGia;
     @FXML
-    TextField tongSoTien;
+    TextField txtTongSoTien;
     @FXML
-    TextField tienKhachTra;
+    TextField txtTienKhachTra;
     @FXML
-    TextField tienTraLai;
+    TextField txtTienTraLai;
     @FXML
     DatePicker ngayBanHang;
     
@@ -83,12 +83,6 @@ public class BanHangController implements Initializable{
         
     }
     
-    
-    
-    
-            
-    
-            
     
 
     @Override
