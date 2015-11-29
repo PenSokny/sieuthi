@@ -21,6 +21,7 @@ public class DonNhapHangDTO {
     private String maNcc;
     private String maNV;
     private String maHang;
+    
 
     public String getMaHoaDon() {
         return maHoaDon;
@@ -134,5 +135,6 @@ public class DonNhapHangDTO {
         this.maNV = maNV;
         this.maHang = maHang;
     }
-    
+
+
 }

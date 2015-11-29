@@ -127,10 +127,10 @@ public class DonNhapHangDAL {
     public ObservableList<DonNhapHangDTO> loadData()
     {
         try {
-            String sql="SELECT * FROM donhang,hangnhap,hang,nhanvien,nhacungcap "
-                    + "WHERE donhang.maDonHang=hangnhap.maDonHang "
-                    + "AND hang.maHang=hangNhap.maHang "
-                    + "AND nhanvien.maNV=donhang.maNV "
+            String sql="SELECT * FROM donhang,nhaphang,hang,nhanvien,nhacungcap "
+                    + "WHERE donhang.maDonHang=nhaphang.maDonHang "
+                    + "AND hang.maHang=nhaphang.maHang "
+                    + "AND nhanvien.maNhanVien=donhang.maNhanVien "
                     + "AND nhacungcap.maNCC=donhang.maNCC";
             resultSet=db.loadData(sql);
             while(resultSet.next())
@@ -183,7 +183,7 @@ public class DonNhapHangDAL {
         String maNcc=nccDto.getMaNcc();
         String maNv=nhanVienDto.getTenNhanVien();
         String maHang=hangDto.getMaHang();
-        dataTableView.add(new DonNhapHangDTO(maHoaDon, ngayLap, tenHang, soLuong, donViTinh, giaNhap, thanhTien,maNcc,maNv,maHang));
+        dataTableView.add(new DonNhapHangDTO(maHoaDon,ngayLap, tenHang, soLuong, donViTinh, giaNhap, thanhTien,maNcc,maNv,maHang));
 
         return dataTableView;
     }
@@ -193,7 +193,7 @@ public class DonNhapHangDAL {
     public int saveData(DonHangDTO donHangDto,HangNhapDTO hangNhapDto)
     {
         String sqlDonHang="INSERT INTO donHang VALUES('"+donHangDto.getMaDonHang()+"','"+donHangDto.getNgayNhapHang()+"','"+donHangDto.getMaNhanVien()+"','"+donHangDto.getMaNCC()+"')";
-        String sqlHangNhap="INSERT INTO hangnhap VALUES('"+hangNhapDto.getMaDonHang()+"','"+hangNhapDto.getMaHang()+"','"+hangNhapDto.getSoLuong()+"')";
+        String sqlHangNhap="INSERT INTO nhaphang VALUES('"+hangNhapDto.getMaDonHang()+"','"+hangNhapDto.getMaHang()+"','"+hangNhapDto.getSoLuong()+"')";
         String sqlCapNhapKho="UPDATE khosanpham SET soLuong=("+hangNhapDto.getSoLuong()+"+soLuong) WHERE maHang='"+hangNhapDto.getMaHang()+"'";
         
         int resultDonHang=db.executeData(sqlDonHang);
@@ -207,4 +207,31 @@ public class DonNhapHangDAL {
         return 0;
             
     }
+    
+    public int updateData(DonHangDTO donHangDto,HangNhapDTO hangNhapDto,String ma){
+        String sqlDonHang="UPDATE donhang SET maDonHang='"+donHangDto.getMaDonHang()+"',ngayDatHang='"+donHangDto.getNgayNhapHang()+"',maNhanVien='"+donHangDto.getMaNhanVien()+"',maNCC='"+donHangDto.getMaNCC()+"' WHERE maDonHang='"+ma+"'";
+        String sqlHangNhap="UPDATE nhaphang SET maDonHang='"+hangNhapDto.getMaDonHang()+"',maHang='"+hangNhapDto.getMaHang()+"',soLuong='"+hangNhapDto.getSoLuong()+"' WHERE maDonHang='"+ma+"'";
+        
+        int resultDonHang=db.executeData(sqlDonHang);
+        int resultHangNhap=db.executeData(sqlHangNhap);
+        
+        if(resultDonHang>0 && resultHangNhap>0)
+            return 1;
+        
+        return 0;
+    }
+    
+    public int deletData(DonHangDTO donHangDto,HangNhapDTO hangNhapDto){
+        String sqlDonHang="DELETE FROM donhang WHERE maDonHang='"+donHangDto.getMaDonHang()+"'";
+        String sqlNhapHang="DELETE FROM nhaphang WHERE maDonHang='"+donHangDto.getMaDonHang()+"'";
+        
+        int resultDonHang=db.executeData(sqlDonHang);
+        int resultHangNhap=db.executeData(sqlNhapHang);
+        
+        if(resultDonHang>0 && resultHangNhap>0)
+            return 1;
+        
+        return 0;
+    }
+    
 }

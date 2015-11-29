@@ -68,7 +68,7 @@ public class QuanLyThongTinHangController implements Initializable{
     ComboBox cbMaNCC;
     
     @FXML
-    TextField txtMaNCC;
+    TextField txtTenNCC;
 
     @FXML
     TextField txtDonViTinh;
@@ -203,7 +203,7 @@ public class QuanLyThongTinHangController implements Initializable{
         
             cbMaNCC.setOnAction((event) -> {
                 nCCDto.setMaNcc(cbMaNCC.getSelectionModel().getSelectedItem().toString());
-                txtMaNCC.setText(ttHangDal.loadDataTenNcc(nCCDto)); 
+                txtTenNCC.setText(ttHangDal.loadDataTenNcc(nCCDto)); 
             } ); 
   
     }

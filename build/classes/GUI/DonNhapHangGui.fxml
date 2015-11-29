@@ -65,5 +65,7 @@
             <TableColumn fx:id="thanhTien" prefWidth="95.0" text="Thành tiền" />
         </columns>
       </TableView>
+      <Button layoutX="230.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleButtonSua" prefHeight="25.0" prefWidth="72.0" text="Sửa" />
+      <Button layoutX="364.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleButtonXoa" prefHeight="25.0" prefWidth="72.0" text="Xóa" />
    </children>
 </AnchorPane>

@@ -51,10 +51,10 @@ public class TTHangDal {
         String tenNCC=null;
         try{
             if(!nCCDto.getMaNcc().isEmpty()){
-                String sqlCode="select maNCC from nhacungcap where maNCC='"+nCCDto.getMaNcc()+"'";
+                String sqlCode="select tenNCC from nhacungcap where maNCC='"+nCCDto.getMaNcc()+"'";
                 resultSet=db.loadData(sqlCode);
                 if(resultSet.next()){
-                    tenNCC=resultSet.getString("maNCC");
+                    tenNCC=resultSet.getString("tenNCC");
                 }
             }
             resultSet.close();

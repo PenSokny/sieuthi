@@ -149,7 +149,9 @@ public class DonNhapHangController implements Initializable{
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));
         giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
         thanhTien.setCellValueFactory(new PropertyValueFactory("thanhTien"));
+        
         tbDonNhap.getItems().clear();
+        tbDonNhap.setItems(donNhapHangDal.loadData());
     
     }
   
@@ -166,7 +168,7 @@ public class DonNhapHangController implements Initializable{
         giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
         thanhTien.setCellValueFactory(new PropertyValueFactory("thanhTien"));
         
-        dataTableView=donNhapHangDal.loadDataTbView(hangDto, donNhapHangDto,hangNhapDTO, donHangDto, nccDto, nvDto);
+        dataTableView=donNhapHangDal.loadDataTbView(hangDto,donNhapHangDto, hangNhapDTO, donHangDto, nccDto, nvDto);
         tbDonNhap.setItems(dataTableView);
     }
     
@@ -198,9 +200,50 @@ public class DonNhapHangController implements Initializable{
         
     }
     
+    @FXML
+    private void handleButtonSua(ActionEvent event){
+        int i=tbDonNhap.getSelectionModel().getSelectedIndex();
+        if(i>0){
+            if(validate()){
+               donHangDto.setMaDonHang(txtMaHoaDon.getText());
+               donHangDto.setNgayNhapHang(ngayNhapHang.getValue());
+               donHangDto.setMaNhanVien(cbMaNV.getSelectionModel().getSelectedItem().toString());
+               donHangDto.setMaNCC(cbMaNcc.getSelectionModel().getSelectedItem().toString());
+
+               hangNhapDTO.setMaDonHang(txtMaHoaDon.getText());
+               hangNhapDTO.setMaHang(cbMaHang.getSelectionModel().getSelectedItem().toString());
+               hangNhapDTO.setSoLuong(Double.parseDouble(txtSoLuong.getText()));
+               
+               String ma=tbDonNhap.getSelectionModel().getSelectedItem().getMaHoaDon();
+               if(donNhapHangDal.updateData(donHangDto, hangNhapDTO, ma)>0){
+                   loadTable();
+                   themMoi();
+                   JOptionPane.showMessageDialog(null, "Update thanh cong.");
+               }
+            }
+            else JOptionPane.showMessageDialog(null, "Khong the update duoc.");
+        }
+    }
+    
+    @FXML
+    private void handleButtonXoa(ActionEvent event){
+        int i=tbDonNhap.getSelectionModel().getSelectedIndex();
+        if(i>0){
+            donHangDto.setMaDonHang(tbDonNhap.getSelectionModel().getSelectedItem().getMaHoaDon());
+            hangNhapDTO.setMaDonHang(tbDonNhap.getSelectionModel().getSelectedItem().getMaHoaDon());
+            if(donNhapHangDal.deletData(donHangDto, hangNhapDTO)>0){
+                loadTable();
+                themMoi();
+                JOptionPane.showMessageDialog(null, "Delete thanh cong.");
+                
+            }
+        }
+        else JOptionPane.showMessageDialog(null, "Khong the delete duoc.");
+    }
+    
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle rb) {
         loadTable();
         
         // Handle ListView selection changes.
