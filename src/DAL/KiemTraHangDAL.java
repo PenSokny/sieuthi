@@ -135,9 +135,9 @@ public class KiemTraHangDAL {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(DonNhapHangDal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DonNhapHangDAL.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(DonNhapHangDal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DonNhapHangDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return data;

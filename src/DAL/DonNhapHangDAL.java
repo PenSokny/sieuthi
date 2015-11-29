@@ -168,12 +168,13 @@ public class DonNhapHangDAL {
     }
     
     // Luu data to tableView
-    public ObservableList<DonNhapHangDTO> loadDataTbView(HangDTO hangDto, HangNhapDTO hangNhapDto, DonHangDTO donHangDto, NhaCCDTO nccDto, NhanVienDTO nhanVienDto)
+    public ObservableList<DonNhapHangDTO> loadDataTbView(HangDTO hangDto,DonNhapHangDTO donNhapHangDto, HangNhapDTO hangNhapDto, DonHangDTO donHangDto, NhaCCDTO nccDto, NhanVienDTO nhanVienDto)
     {
         SimpleDateFormat oldFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat newFormat = new SimpleDateFormat("dd-MM-yyyy");
         
         String maHoaDon=donHangDto.getMaDonHang();
+        String ngayLap=donNhapHangDto.getNgayNhapHang();
         String tenHang=hangDto.getTenHang();
         double soLuong=hangNhapDto.getSoLuong();
         String donViTinh=hangDto.getDonViTinh();
@@ -182,7 +183,7 @@ public class DonNhapHangDAL {
         String maNcc=nccDto.getMaNcc();
         String maNv=nhanVienDto.getTenNhanVien();
         String maHang=hangDto.getMaHang();
-        dataTableView.add(new DonNhapHangDTO(maHoaDon, tenHang, soLuong, donViTinh, giaNhap, thanhTien,maNcc,maNv,maHang));
+        dataTableView.add(new DonNhapHangDTO(maHoaDon, ngayLap, tenHang, soLuong, donViTinh, giaNhap, thanhTien,maNcc,maNv,maHang));
 
         return dataTableView;
     }
