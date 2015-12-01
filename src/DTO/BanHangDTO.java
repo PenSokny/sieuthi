@@ -21,11 +21,11 @@ public class BanHangDTO {
     private String maThe;
     private String maHoaDon;
     
-    public void BanHangDTO(){
+    public  BanHangDTO(){
         
     }
     
-    public void BanHangDTO(String maSanPham,String tenSanPham,double soLuong,String donViTinh,double donGia,double thanhTien){
+    public BanHangDTO(String maSanPham,String tenSanPham,double soLuong,double donGia, String donViTinh,double thanhTien){
         this.tenSanPham=tenSanPham;
         this.maSanPham=maSanPham;
         this.soLuong=soLuong;
@@ -33,7 +33,7 @@ public class BanHangDTO {
         this.donGia=donGia;
         this.thanhTien=thanhTien;
     }
-
+    
     public String getMaSanPham() {
         return maSanPham;
     }

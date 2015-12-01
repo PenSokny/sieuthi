@@ -108,6 +108,13 @@ public class BanHangDAL {
         return result;
     }
     
+        public int themHangVaoHoaDon(BanHangDTO banHangDto){
+        int result;
+        String sql="INSERT INTO hoadon  VALUES('"+banHangDto.getMaHoaDon()+"' ,'"+ banHangDto.getNgayLapHoaDon()+"' )";       
+        result=db.executeData(sql);       
+        return result;
+    }
+    
     public int updateKhoSP(BanHangDTO banHangDto){
         
         String sql="UPDATE khosanpham SET soLuong=soLuong -"+banHangDto.getSoLuong()+" WHERE maHang="+banHangDto.getMaSanPham()+"";

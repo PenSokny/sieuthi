@@ -76,7 +76,7 @@ public class KiemTraHangController implements Initializable{
         maHang.setCellValueFactory(new PropertyValueFactory("maHang"));
         tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));
-        ncc.setCellValueFactory(new PropertyValueFactory("ncc"));
+        ncc.setCellValueFactory(new PropertyValueFactory("tenNCC"));
         giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
         giaBan.setCellValueFactory(new PropertyValueFactory("giaBan"));
         ngayHSD.setCellValueFactory(new PropertyValueFactory("ngayHSD"));
@@ -92,6 +92,8 @@ public class KiemTraHangController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Load ten nha cung cap
+       
+        
         cbTenNcc.getItems().clear();
         cbTenNcc.setItems(kiemTraHangDal.loadTenNcc());
         
@@ -151,6 +153,8 @@ public class KiemTraHangController implements Initializable{
              }
          });
         
+        resultSet=kiemTraHangDal.timKiemHangCon();
+        loadTable(resultSet);
         
     }
     
@@ -162,7 +166,9 @@ public class KiemTraHangController implements Initializable{
             resultSet=kiemTraHangDal.timKiemTheoMaHang(hangDto);
             loadTable(resultSet);
         }
-        //else JOptionPane.showMessageDialog(null, "Không tìm thầy!");
+        else {
+            JOptionPane.showMessageDialog(null, "Không tìm thầy!");
+        }
     }
     @FXML
     private void btnTimTenHang(ActionEvent event){
@@ -175,7 +181,7 @@ public class KiemTraHangController implements Initializable{
     }
     @FXML
     private void btnTimNCC(ActionEvent event){
-        boolean empty=form.comboBoxIsEmtpy(cbTenNcc, "Chọn Tên Nhà cung cấp");
+        boolean empty=form.comboBoxIsEmtpy(cbTenNcc, "Chọn tên nhà cung cấp");
         if(!empty){
             hangDto.setTenNCC(cbTenNcc.getSelectionModel().getSelectedItem().toString());
             resultSet=kiemTraHangDal.timKiemTheoTenNcc(nccDto);
