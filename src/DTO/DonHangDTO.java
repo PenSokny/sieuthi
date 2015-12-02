@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class DonHangDTO {
     
     private String maDonHang;
-    private LocalDate ngayNhapHang;
+    private String ngayNhapHang;
     private String maNhanVien;
     private String maNCC;
     
@@ -23,7 +23,7 @@ public class DonHangDTO {
 
     
     
-    public DonHangDTO(String maDonHang, LocalDate ngayNhapHang, String maNv, String maNcc) {
+    public DonHangDTO(String maDonHang, String ngayNhapHang, String maNv, String maNcc) {
         this.maDonHang = maDonHang;
         this.ngayNhapHang = ngayNhapHang;
         this.maNhanVien = maNv;
@@ -39,11 +39,11 @@ public class DonHangDTO {
         this.maDonHang = maDonHang;
     }
 
-    public LocalDate getNgayNhapHang() {
+    public String getNgayNhapHang() {
         return ngayNhapHang;
     }
 
-    public void setNgayNhapHang(LocalDate ngayNhapHang) {
+    public void setNgayNhapHang(String ngayNhapHang) {
         this.ngayNhapHang = ngayNhapHang;
     }
 

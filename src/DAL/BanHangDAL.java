@@ -90,20 +90,20 @@ public class BanHangDAL {
     public ResultSet getTableData(BanHangDTO banHangDto){
         String sql="SELECT hangban.maHang, tenHang, soLuong, giaBan, donViTinh, soLuong*donGia AS thanhTien FROM hoadon, "
                 + "hangban, hang WHERE hoadon.soHoaDon=hangban.soHoaDon "
-                + "AND hangban.maHang=hang.maHang AND hangban.soHoaDon ";
+                + "AND hangban.maHang=hang.maHang AND hangban.soHoaDon=0 ";
         resultSet=db.loadData(sql);
         return resultSet;
     }
     
     public ResultSet getSoLuongSP(BanHangDTO banHangDto){
-        String sql="SELECT soLuong FROM khosanpham WHERE maHang='"+banHangDto.getMaSanPham()+"'";
+        String sql="SELECT soLuong FROM khosanpham WHERE maHang="+banHangDto.getMaSanPham()+"";
         resultSet=db.loadData(sql);
         return resultSet;
     }
     
     public int themHangVaoHangBan(BanHangDTO banHangDto){
         int result;
-        String sql="INSERT INTO hoadon VALUES('"+banHangDto.getMaHoaDon()+"','"+banHangDto.getNgayLapHoaDon()+"')";
+        String sql="INSERT INTO hangban VALUES('"+banHangDto.getMaHoaDon()+"','"+banHangDto.getNgayLapHoaDon()+"')";
         result=db.executeData(sql);
         return result;
     }
@@ -129,7 +129,7 @@ public class BanHangDAL {
     }
     
     public int themHangVaoKhoSP(BanHangDTO banHangDto){
-        String sql="UPDATE khosanpham SET soLuong= soLuong+"+banHangDto.getSoLuong()+" WHERE maHang='"+banHangDto.getMaSanPham()+"'";
+        String sql="UPDATE khosanpham SET soLuong= soLuong+ "+banHangDto.getSoLuong()+" WHERE maHang='"+banHangDto.getMaSanPham()+"'";
         int result=db.executeData(sql);
         return result;
     }

@@ -96,7 +96,7 @@ public class TimDonNhapHangController implements Initializable {
     @FXML
     public void handleTimKiemTheoNgayNhap(ActionEvent e){
         
-            donHangDto.setNgayNhapHang(ngayNhapHang.getValue());
+            donHangDto.setNgayNhapHang(ngayNhapHang.getValue().toString());
             resultSet=timDonNhapHangDal.timTheoNgayNhapHang(donHangDto);
             loadTable(resultSet);
     }

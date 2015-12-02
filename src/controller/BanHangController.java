@@ -36,7 +36,7 @@ public class BanHangController implements Initializable{
     @FXML
     TableColumn<BanHangDTO,String> maSP;
     @FXML
-    TableColumn<BanHangDTO,String> tenSanPham;
+    TableColumn<BanHangDTO,String> tenSP;
     @FXML
     TableColumn<BanHangDTO,String> soLuong;
     @FXML
@@ -106,17 +106,20 @@ public class BanHangController implements Initializable{
         txtSoLuong.setText("");
         txtDonGia.setText("");
         txtDonViTinh.setText("");
+        ngayBanHang.setValue(LocalDate.now());
 
     }
-
+    
+    //load data vao table
     public void loadData() {
-         maSP.setCellValueFactory(new PropertyValueFactory("maHang"));
-        tenSanPham.setCellValueFactory(new PropertyValueFactory("tenHang"));
+         maSP.setCellValueFactory(new PropertyValueFactory("maSP"));
+        tenSP.setCellValueFactory(new PropertyValueFactory("tenSP"));
         soLuong.setCellValueFactory(new PropertyValueFactory("soLuong"));
         donGia.setCellValueFactory(new PropertyValueFactory("donGia"));
         thanhTien.setCellValueFactory(new PropertyValueFactory("thanhTien"));
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));       
         tbBanHang.getItems().clear();
+        
         ObservableList<BanHangDTO> loadData=FXCollections.observableArrayList(arr);
         tbBanHang.setItems(loadData);
     }
@@ -142,15 +145,15 @@ public class BanHangController implements Initializable{
             double so = Double.valueOf(txtSoLuong.getText());
             if (banHangDto.getSoLuong() >= so) {
                 setData(banHangDto);
-                String maSP = txtMaSP.getText();
-                String tenSP = txtTenSP.getText();
-                double soLuong = Double.valueOf(txtSoLuong.getText());
-                double donGia = Double.valueOf(txtDonGia.getText());
-                String donViTinh = txtDonViTinh.getText();
-                soTien = soTien + soLuong * donGia;
+                String ma = txtMaSP.getText();
+                String ten = txtTenSP.getText();
+                double soluong = Double.valueOf(txtSoLuong.getText());
+                double dongia = Double.valueOf(txtDonGia.getText());
+                String donVi = txtDonViTinh.getText();
+                soTien = soTien + soluong * dongia;
                 txtTongSoTien.setText("" + soTien);
                 
-                arr.add(new BanHangDTO(maSP, tenSP, soLuong, donGia, donViTinh, soLuong * donGia));
+                arr.add(new BanHangDTO(ma, ten, soluong, dongia, donVi, soluong * dongia));
                 loadData();
                 //kiemTraHangTrongBang();
             } else {
@@ -168,7 +171,7 @@ public class BanHangController implements Initializable{
     @FXML
     private void handleEnterPressed(javafx.scene.input.KeyEvent event){
         if (event.getCode() == KeyCode.ENTER) {
-            soLuong.setText("1");
+            txtSoLuong.setText("1");
             banHangDto.setMaSanPham(txtMaSP.getText().trim());
             if(banHangDal.loadDataToTextField(banHangDal.setData(banHangDto), banHangDto)==true){
             setData(banHangDto);
@@ -222,6 +225,7 @@ public class BanHangController implements Initializable{
                     } else {
                         JOptionPane.showMessageDialog(null, "Thành toán không thành công");
                     }
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Thành toán không thành công");
                 }
@@ -235,8 +239,8 @@ public class BanHangController implements Initializable{
     @FXML
     public void handleThem(ActionEvent event){
        boolean i = true;
-        if(soLuong.getText().equals("")){
-            soLuong.setText("1");
+        if(txtSoLuong.getText().equals("")){
+            txtSoLuong.setText("1");
         }
         if (setValidation() == true) {
             if (arr.isEmpty()) {
@@ -285,6 +289,8 @@ public class BanHangController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        //loadData();
         
         SimpleDateFormat oldFormat = new SimpleDateFormat("dd-MM-yyyy");
         SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");

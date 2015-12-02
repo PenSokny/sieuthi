@@ -76,7 +76,7 @@ public class KiemTraHangController implements Initializable{
         maHang.setCellValueFactory(new PropertyValueFactory("maHang"));
         tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));
-        ncc.setCellValueFactory(new PropertyValueFactory("tenNCC"));
+        ncc.setCellValueFactory(new PropertyValueFactory("ncc"));
         giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
         giaBan.setCellValueFactory(new PropertyValueFactory("giaBan"));
         ngayHSD.setCellValueFactory(new PropertyValueFactory("ngayHSD"));

@@ -143,7 +143,7 @@ public class DonNhapHangController implements Initializable{
     public void loadTable(){
         //Load Data vao TableView
         maHoaDon.setCellValueFactory(new PropertyValueFactory("maHoaDon"));
-        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayDatHang"));
+        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayLap"));
         tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
         soLuong.setCellValueFactory(new PropertyValueFactory("soLuong"));
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));
@@ -154,31 +154,31 @@ public class DonNhapHangController implements Initializable{
         tbDonNhap.setItems(donNhapHangDal.loadData());
     
     }
-  
+    /*
     public void addTableView()
     {
          //Load Data vao TableView
         ObservableList<DonNhapHangDTO> dataTableView=FXCollections.observableArrayList(); 
         
         maHoaDon.setCellValueFactory(new PropertyValueFactory("maHoaDon"));
-        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayDatHang"));
+        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayLap"));
         tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
         soLuong.setCellValueFactory(new PropertyValueFactory("soLuong"));
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));
         giaNhap.setCellValueFactory(new PropertyValueFactory("giaNhap"));
         thanhTien.setCellValueFactory(new PropertyValueFactory("thanhTien"));
         
-        dataTableView=donNhapHangDal.loadDataTbView(hangDto,donNhapHangDto, hangNhapDTO, donHangDto, nccDto, nvDto);
+        dataTableView=donNhapHangDal.loadDataTbView(hangDto, hangNhapDTO, donHangDto, nccDto, nvDto);
         tbDonNhap.setItems(dataTableView);
     }
-    
+    */
 
     @FXML
     private void handleButtonLuu(ActionEvent event){
         if(validate())
          {
                donHangDto.setMaDonHang(txtMaHoaDon.getText());
-               donHangDto.setNgayNhapHang(ngayNhapHang.getValue());
+               donHangDto.setNgayNhapHang(ngayNhapHang.getValue().toString());
                donHangDto.setMaNhanVien(cbMaNV.getSelectionModel().getSelectedItem().toString());
                donHangDto.setMaNCC(cbMaNcc.getSelectionModel().getSelectedItem().toString());
 
@@ -206,7 +206,7 @@ public class DonNhapHangController implements Initializable{
         if(i>0){
             if(validate()){
                donHangDto.setMaDonHang(txtMaHoaDon.getText());
-               donHangDto.setNgayNhapHang(ngayNhapHang.getValue());
+               donHangDto.setNgayNhapHang(ngayNhapHang.getValue().toString());
                donHangDto.setMaNhanVien(cbMaNV.getSelectionModel().getSelectedItem().toString());
                donHangDto.setMaNCC(cbMaNcc.getSelectionModel().getSelectedItem().toString());
 
@@ -276,7 +276,7 @@ public class DonNhapHangController implements Initializable{
         cbMaNcc.getItems().clear();
         cbMaNcc.setItems(donNhapHangDal.loadDataNCC());
         
-            cbMaNcc.setOnAction((event) -> {
+           cbMaNcc.setOnAction((event) -> {
            nccDto.setMaNcc(cbMaNcc.getSelectionModel().getSelectedItem().toString());
            txtTenNcc.setText(donNhapHangDal.getTenNCC(nccDto)); 
            

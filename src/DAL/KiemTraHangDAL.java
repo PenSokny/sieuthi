@@ -27,7 +27,6 @@ public class KiemTraHangDAL {
     
     private ObservableList<TimHangDTO> data=FXCollections.observableArrayList();
     private ObservableList<String> dataNcc=FXCollections.observableArrayList();
-    private ObservableList<String> dataLoaiHang=FXCollections.observableArrayList();
     ResultSet resultSet;
     
     //Tim kiem theo maHang
