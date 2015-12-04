@@ -69,7 +69,7 @@ public class TimDonNhapHangController implements Initializable {
     {
         //Load Data vao TableView
         maHoaDon.setCellValueFactory(new PropertyValueFactory("maHoaDon"));
-        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayDatHang"));
+        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayNhapHang"));
         tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
         soLuong.setCellValueFactory(new PropertyValueFactory("soLuong"));
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));

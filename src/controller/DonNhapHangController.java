@@ -143,7 +143,7 @@ public class DonNhapHangController implements Initializable{
     public void loadTable(){
         //Load Data vao TableView
         maHoaDon.setCellValueFactory(new PropertyValueFactory("maHoaDon"));
-        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayLap"));
+        ngayLap.setCellValueFactory(new PropertyValueFactory("ngayNhapHang"));
         tenHang.setCellValueFactory(new PropertyValueFactory("tenHang"));
         soLuong.setCellValueFactory(new PropertyValueFactory("soLuong"));
         donViTinh.setCellValueFactory(new PropertyValueFactory("donViTinh"));

@@ -49,8 +49,8 @@
       </Label>
       <TextField fx:id="txtSoLuong" layoutX="404.0" layoutY="119.0" prefHeight="25.0" prefWidth="115.0" />
       <TextField fx:id="txtDonViTinh" editable="false" layoutX="404.0" layoutY="161.0" prefHeight="25.0" prefWidth="115.0" />
-      <Button layoutX="243.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleThem" prefHeight="25.0" prefWidth="88.0" text="Thêm" />
-      <Button layoutX="350.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleXoa" prefHeight="25.0" prefWidth="88.0" text="Xóa" />
+      <Button layoutX="170.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleThem" prefHeight="25.0" prefWidth="88.0" text="Thêm" />
+      <Button layoutX="320.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleXoa" prefHeight="25.0" prefWidth="88.0" text="Xóa" />
       <TextField fx:id="txtTienKhachTra" layoutX="652.0" layoutY="158.0" onKeyPressed="#handlePress" prefHeight="25.0" prefWidth="115.0" text="0" />
       <TextField fx:id="txtTienTraLai" editable="false" layoutX="652.0" layoutY="198.0" prefHeight="25.0" prefWidth="115.0" text="0" />
       <Label layoutX="537.0" layoutY="198.0" text="Tiền trả lại">
@@ -74,7 +74,6 @@
          </font></Label>
       <TextField fx:id="txtDonGia" editable="false" layoutX="170.0" layoutY="204.0" prefHeight="25.0" prefWidth="115.0" />
       <DatePicker fx:id="ngayBanHang" editable="false" layoutX="404.0" layoutY="203.0" prefHeight="25.0" prefWidth="115.0" />
-      <Button fx:id="btnThanhTien" layoutX="459.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleThanhTien" prefHeight="25.0" prefWidth="78.0" text="Thanh Tiền" />
       <Label layoutX="307.0" layoutY="208.0" text="Ngày tháng">
          <font>
             <Font size="16.0" />

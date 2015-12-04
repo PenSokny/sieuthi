@@ -73,6 +73,7 @@ public class BanHangDAL {
         }
     }
     
+    /*
     public boolean kiemTraHangTrongTable(ResultSet resultSet,BanHangDTO banHangDto){
         boolean i=true;
         try{
@@ -86,6 +87,7 @@ public class BanHangDAL {
         }
         return i;
     }
+    */
     
     public ResultSet getTableData(BanHangDTO banHangDto){
         String sql="SELECT hangban.maHang, tenHang, soLuong, giaBan, donViTinh, soLuong*donGia AS thanhTien FROM hoadon, "
@@ -103,12 +105,12 @@ public class BanHangDAL {
     
     public int themHangVaoHangBan(BanHangDTO banHangDto){
         int result;
-        String sql="INSERT INTO hangban VALUES('"+banHangDto.getMaHoaDon()+"','"+banHangDto.getNgayLapHoaDon()+"')";
+        String sql="INSERT INTO hangban VALUES("+banHangDto.getSoLuong()+", "+banHangDto.getDonGia()+", '"+banHangDto.getMaSanPham()+"', "+banHangDto.getMaHoaDon()+")";
         result=db.executeData(sql);
         return result;
     }
     
-        public int themHangVaoHoaDon(BanHangDTO banHangDto){
+    public int themHangVaoHoaDon(BanHangDTO banHangDto){
         int result;
         String sql="INSERT INTO hoadon  VALUES('"+banHangDto.getMaHoaDon()+"' ,'"+ banHangDto.getNgayLapHoaDon()+"' )";       
         result=db.executeData(sql);       

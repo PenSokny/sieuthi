@@ -94,11 +94,6 @@ public class UserController implements Initializable{
     }
     
     @FXML
-    private void handleButtonThemMoi(ActionEvent event){
-        themMoi();
-    }
-    
-    @FXML
     private void handleButtonXoa(ActionEvent event){
         int i=tbUser.getSelectionModel().getSelectedIndex();
         if(i>0){

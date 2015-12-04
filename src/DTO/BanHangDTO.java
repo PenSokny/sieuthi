@@ -25,7 +25,7 @@ public class BanHangDTO {
         
     }
     
-    public BanHangDTO(String maSanPham,String tenSanPham,double soLuong,double donGia, String donViTinh,double thanhTien){
+    public BanHangDTO(String maSanPham, String tenSanPham, double soLuong, double donGia, String donViTinh, double thanhTien){
         this.tenSanPham=tenSanPham;
         this.maSanPham=maSanPham;
         this.soLuong=soLuong;

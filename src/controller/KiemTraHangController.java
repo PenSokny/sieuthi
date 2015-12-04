@@ -183,7 +183,7 @@ public class KiemTraHangController implements Initializable{
     private void btnTimNCC(ActionEvent event){
         boolean empty=form.comboBoxIsEmtpy(cbTenNcc, "Chọn tên nhà cung cấp");
         if(!empty){
-            hangDto.setTenNCC(cbTenNcc.getSelectionModel().getSelectedItem().toString());
+            nccDto.setTenNcc(cbTenNcc.getSelectionModel().getSelectedItem().toString());
             resultSet=kiemTraHangDal.timKiemTheoTenNcc(nccDto);
             loadTable(resultSet);
         }

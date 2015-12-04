@@ -58,7 +58,7 @@ public class NhanVienController implements Initializable{
     public void loadData(){
          maNhanVien.setCellValueFactory(new PropertyValueFactory("maNhanVien"));
          tenNhanVien.setCellValueFactory(new PropertyValueFactory("tenNhanVien"));
-         soDt.setCellValueFactory(new PropertyValueFactory("soDt"));
+         soDt.setCellValueFactory(new PropertyValueFactory("dienThoai"));
          moTa.setCellValueFactory(new PropertyValueFactory("moTa"));
          tblNhanVien.getItems().clear();
          tblNhanVien.setItems(nvDal.loadData(nvDal.getNhanVien()));

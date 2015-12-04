@@ -8,6 +8,7 @@ package controller;
 import DAL.BanHangDAL;
 import DTO.BanHangDTO;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -64,16 +65,14 @@ public class BanHangController implements Initializable{
     TextField txtTienTraLai;
     @FXML
     DatePicker ngayBanHang;
+ 
     
-    @FXML
-    private Button btnThanhTien;
-    @FXML
-    private Button inHoaDon;
     private double soTien=0;
-      
+    
     BanHangDTO banHangDto=new BanHangDTO();
     BanHangDAL banHangDal=new BanHangDAL();
     FormValidation validation=new FormValidation();
+    ResultSet resultSet;
     
     ArrayList <BanHangDTO> arr=new ArrayList<>();
     
@@ -106,14 +105,14 @@ public class BanHangController implements Initializable{
         txtSoLuong.setText("");
         txtDonGia.setText("");
         txtDonViTinh.setText("");
-        ngayBanHang.setValue(LocalDate.now());
+        //ngayBanHang.setValue(LocalDate.now());
 
     }
     
     //load data vao table
     public void loadData() {
-         maSP.setCellValueFactory(new PropertyValueFactory("maSP"));
-        tenSP.setCellValueFactory(new PropertyValueFactory("tenSP"));
+         maSP.setCellValueFactory(new PropertyValueFactory("maSanPham"));
+        tenSP.setCellValueFactory(new PropertyValueFactory("tenSanPham"));
         soLuong.setCellValueFactory(new PropertyValueFactory("soLuong"));
         donGia.setCellValueFactory(new PropertyValueFactory("donGia"));
         thanhTien.setCellValueFactory(new PropertyValueFactory("thanhTien"));
@@ -155,7 +154,7 @@ public class BanHangController implements Initializable{
                 
                 arr.add(new BanHangDTO(ma, ten, soluong, dongia, donVi, soluong * dongia));
                 loadData();
-                //kiemTraHangTrongBang();
+                //kiemTraHangTrongTable();
             } else {
                 JOptionPane.showMessageDialog(null, "Số lượng trong kho không đủ");
                 
@@ -174,68 +173,15 @@ public class BanHangController implements Initializable{
             txtSoLuong.setText("1");
             banHangDto.setMaSanPham(txtMaSP.getText().trim());
             if(banHangDal.loadDataToTextField(banHangDal.setData(banHangDto), banHangDto)==true){
-            setData(banHangDto);
+                setData(banHangDto);
             }
             else{
                 themMoi();
             }
         }
     }
-    @FXML
-    public void handleThanhTien(ActionEvent event){
-        boolean b = true;
-        if (setValidationTienKhachTra() == true) {
-            double khachTra = Double.valueOf(txtTienKhachTra.getText());
-            double tong = Double.valueOf(txtTongSoTien.getText());
-            if (khachTra >= tong) {
-                banHangDto.setNgayLapHoaDon(ngayBanHang.getValue().toString());
-                banHangDal.loadMaHoaDon(banHangDal.getSoHoaDon(), banHangDto);
-                banHangDto.setMaHoaDon("" + (Integer.valueOf(banHangDto.getMaHoaDon()) + 1));
-                if (!arr.isEmpty()) {
-                    if (banHangDal.themHangVaoHoaDon(banHangDto) > 0) {
-                         
-                        for (BanHangDTO ban : arr) {
-                            banHangDto.setMaSanPham(ban.getMaSanPham());
-                            banHangDto.setTenSanPham(ban.getTenSanPham());
-                            banHangDto.setSoLuong(ban.getSoLuong());
-                            banHangDto.setDonGia(ban.getDonGia());
-                            banHangDto.setDonViTinh(ban.getDonViTinh());
    
-                            banHangDal.themHangVaoHangBan(banHangDto);
-                            banHangDal.updateKhoSP(banHangDto);
-                            
-                        }
-                       
-                      
-                      
-                        tbBanHang.getItems().clear();
-                        arr.clear();
-                        JOptionPane.showMessageDialog(null, "Thành toán thành công");
-                        
-                            Map m=new HashMap();
-                            m.put("soHoaDon",banHangDto.getMaHoaDon());
-                            m.put("tongSoTien",txtTongSoTien.getText());
-                            m.put("tienKhachTra", txtTienKhachTra.getText());
-                            m.put("tienCon",""+(khachTra - tong));
-                            
-                        
-                          txtTienKhachTra.setText("0");
-                          txtTongSoTien.setText("0");
-                        
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Thành toán không thành công");
-                    }
-                    
-                } else {
-                    JOptionPane.showMessageDialog(null, "Thành toán không thành công");
-                }
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Tiền khách trả không đủ");
-            }
-
-        }
-    }
     @FXML
     public void handleThem(ActionEvent event){
        boolean i = true;
@@ -243,6 +189,8 @@ public class BanHangController implements Initializable{
             txtSoLuong.setText("1");
         }
         if (setValidation() == true) {
+           //banHangDal.themHangVaoHangBan(banHangDto);
+        
             if (arr.isEmpty()) {
                 them();
             } else {
@@ -261,6 +209,7 @@ public class BanHangController implements Initializable{
         }
         themMoi(); 
     }
+    
     @FXML
     public void handleXoa(ActionEvent event){
         int i=tbBanHang.getSelectionModel().getSelectedIndex();
